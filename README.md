@@ -1,36 +1,65 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Smile Concept — Clinic Profile Site
 
-## Getting Started
+Website profile for the **Smile Concept** dental clinic, rebuilt pixel-perfect from the
+[smile-concept.vercel.app](https://smile-concept.vercel.app) prototype using Next.js App Router +
+Tailwind CSS v4 + shadcn/ui.
 
-First, run the development server:
+## Stack
+
+- **Next.js 15.2.8** (App Router) · **React 19** · **TypeScript 5**
+- **Tailwind CSS v4** — color/font tokens live in the `@theme` block of `src/app/globals.css`
+  (not `tailwind.config.ts`; that file is nearly empty)
+- **shadcn/ui** + **Embla Carousel** + **framer-motion**
+- **External CMS**: `https://cms.tumbuhsehat.id/api` (settings, posts, promos)
+
+## Getting started
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev     # → http://localhost:3000
+npm run build
+npm run lint
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+No `.env` file is required — both variables have code defaults. Copy `.env.example` → `.env.local`
+only if you want to override one:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| Variable | Default | Purpose |
+|---|---|---|
+| `NEXT_PUBLIC_CMS_API_URL` | `https://cms.tumbuhsehat.id/api` | CMS base URL, no trailing slash |
+| `NEXT_PUBLIC_SITE_URL` | `https://smileconcept.id` | site origin — canonical URLs, OG tags, sitemap |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+⚠️ The `NEXT_PUBLIC_SITE_URL` default is still a **guess**; change it once the production domain
+is confirmed.
 
-## Learn More
+## Routes
 
-To learn more about Next.js, take a look at the following resources:
+```
+/                        home (9 sections)
+/treatments              listing · /treatments/[slug] detail
+/doctors                 listing · /doctors/[slug] detail
+/promo                   promos from the CMS (static fallback while the CMS is empty)
+/blog · /blog/id · /blog/en · /blog/[slug]
+/api/sitemap             sitemap route handler
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Important notes
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **CMS rate limit is 5 req/min/IP.** All fetches go through the Next Data Cache with long
+  `revalidate` windows. Do not switch to `cache: "no-store"`.
+- **Typography & layout must go through the existing utilities**: `h1-display`, `h2`,
+  `h3-subheadline`, `h4`, `body-text`, `caption`, `btn-primary`, `btn-outline` (defined as
+  `@utility` in `globals.css`) plus the `<Shell>` component. Do not hand-tune sizes per element.
+- **Pixel-perfect rule**: visuals must match the prototype exactly. Do not improvise the design —
+  see `CLAUDE.md`.
+- Static content (treatments, doctors, home sections) lives in `src/lib/data/` and
+  `src/sections/home/`; only settings/posts/promos are CMS-driven.
 
-## Deploy on Vercel
+## Further documentation
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+| File | Contents |
+|---|---|
+| `HANDOFF.md` | Handover status: CMS integration, setup, pitfalls, remaining work |
+| `CONTENT-CHECKLIST.md` | Content checkpoint: done vs brief, what remains |
+| `PLAN.md` | Build log per phase + rationale for every technical decision |
+| `CLAUDE.md` | Working rules (fidelity, conventions, commands) |
