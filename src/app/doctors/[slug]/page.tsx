@@ -63,9 +63,11 @@ export default async function DoctorDetailPage({
                 <span className="font-body text-[18px] leading-[1.4] text-ink/60">
                   {slot.day}
                 </span>
-                <span className="font-subhead text-[24px] font-medium leading-[1.3] text-ink">
-                  {slot.time}
-                </span>
+                {slot.time && (
+                  <span className="font-subhead text-[24px] font-medium leading-[1.3] text-ink">
+                    {slot.time}
+                  </span>
+                )}
               </div>
             ))}
           </div>

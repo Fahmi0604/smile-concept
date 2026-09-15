@@ -40,16 +40,30 @@ const CATEGORIES: Category[] = [
       {
         name: "Dental Spa",
         sub: "Pembersihan karang dan noda gigi minim rasa sakit",
+        href: "/treatments/dental-spa",
       },
       { name: "Braces", sub: "Perawatan kawat gigi", href: "/treatments/braces" },
-      { name: "Clear Aligner", sub: "Invisalign" },
-      { name: "Bleaching", sub: "Pemutihan gigi" },
-      { name: "Veneer dan Crown", sub: "Mahkota tiruan" },
-      { name: "Gingivectomy", sub: "Perawatan gusi estetik" },
-      { name: "Gum depigmentation", sub: "Mencerahkan tampilan gusi" },
+      { name: "Clear Aligner", sub: "Invisalign", href: "/treatments/clear-aligner" },
+      { name: "Bleaching", sub: "Pemutihan gigi", href: "/treatments/bleaching" },
+      {
+        name: "Veneer dan Crown",
+        sub: "Mahkota tiruan",
+        href: "/treatments/veneer-dan-crown",
+      },
+      {
+        name: "Gingivectomy",
+        sub: "Perawatan gusi estetik",
+        href: "/treatments/gingivectomy",
+      },
+      {
+        name: "Gum depigmentation",
+        sub: "Mencerahkan tampilan gusi",
+        href: "/treatments/gum-depigmentation",
+      },
       {
         name: "Smile Makeover",
         sub: "Kombinasi perawatan estetik untuk senyum yang lebih harmonis",
+        href: "/treatments/smile-makeover",
       },
     ],
   },
@@ -59,10 +73,26 @@ const CATEGORIES: Category[] = [
     image: "/assets/smile-concept/ModelTreatment2.png",
     imageRight: true,
     items: [
-      { name: "Full mouth rehabilitation", sub: "Perbaikan gigitan" },
-      { name: "Removable denture", sub: "Gigi tiruan lepasan" },
-      { name: "Dental implant", sub: "Implan gigi" },
-      { name: "Fixed denture", sub: "Gigi tiruan cekat" },
+      {
+        name: "Full mouth rehabilitation",
+        sub: "Perbaikan gigitan",
+        href: "/treatments/full-mouth-rehabilitation",
+      },
+      {
+        name: "Removable denture",
+        sub: "Gigi tiruan lepasan",
+        href: "/treatments/removable-denture",
+      },
+      {
+        name: "Dental implant",
+        sub: "Implan gigi",
+        href: "/treatments/dental-implant",
+      },
+      {
+        name: "Fixed denture",
+        sub: "Gigi tiruan cekat",
+        href: "/treatments/fixed-denture",
+      },
     ],
   },
   {
@@ -70,13 +100,30 @@ const CATEGORIES: Category[] = [
     title: "No More Pain All the Gain",
     image: "/assets/smile-concept/ModelTreatment3.png",
     items: [
-      { name: "Aesthetic filling", sub: "Penambalan gigi estetik" },
-      { name: "Root canal treatment", sub: "Perawatan saluran akar" },
-      { name: "Tooth extraction", sub: "Pencabutan gigi" },
-      { name: "Odontectomy", sub: "Operasi gigi geraham bungsu" },
+      {
+        name: "Aesthetic filling",
+        sub: "Penambalan gigi estetik",
+        href: "/treatments/aesthetic-filling",
+      },
+      {
+        name: "Root canal treatment",
+        sub: "Perawatan saluran akar",
+        href: "/treatments/root-canal-treatment",
+      },
+      {
+        name: "Tooth extraction",
+        sub: "Pencabutan gigi",
+        href: "/treatments/tooth-extraction",
+      },
+      {
+        name: "Odontectomy",
+        sub: "Operasi gigi geraham bungsu",
+        href: "/treatments/odontectomy",
+      },
       {
         name: "Temporomandibular joint disorder treatment",
         sub: "Perawatan untuk sakit pada sendi rahang",
+        href: "/treatments/temporomandibular-joint-disorder-treatment",
       },
     ],
   },
@@ -88,15 +135,36 @@ const CATEGORIES: Category[] = [
     image: "/assets/smile-concept/Placeholder.png",
     imageRight: true,
     items: [
-      { name: "Scaling for kids", sub: "Pembersihan karang gigi anak" },
-      { name: "Fluoride treatment", sub: "Perawatan fluoride" },
+      {
+        name: "Scaling for kids",
+        sub: "Pembersihan karang gigi anak",
+        href: "/treatments/scaling-for-kids",
+      },
+      {
+        name: "Fluoride treatment",
+        sub: "Perawatan fluoride",
+        href: "/treatments/fluoride-treatment",
+      },
       {
         name: "Pit and fissure sealant",
         sub: "Perawatan untuk mencegah gigi berlubang",
+        href: "/treatments/pit-and-fissure-sealant",
       },
-      { name: "Pulpotomy & Pulpectomy", sub: "Perawatan saluran akar anak" },
-      { name: "Tooth extraction for kids", sub: "Pencabutan gigi anak" },
-      { name: "Kids braces", sub: "Kawat gigi anak" },
+      {
+        name: "Pulpotomy & Pulpectomy",
+        sub: "Perawatan saluran akar anak",
+        href: "/treatments/pulpotomy-pulpectomy",
+      },
+      {
+        name: "Tooth extraction for kids",
+        sub: "Pencabutan gigi anak",
+        href: "/treatments/tooth-extraction-for-kids",
+      },
+      {
+        name: "Kids braces",
+        sub: "Kawat gigi anak",
+        href: "/treatments/kids-braces",
+      },
     ],
   },
 ];

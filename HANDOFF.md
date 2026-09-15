@@ -181,9 +181,10 @@ Prioritas turun ke bawah:
 7. **Favicon** — `public/favicon.png` masih milik Onyx. Butuh ikon persegi dari klien;
    `Logo1.png` (749×257) rasionya tidak cocok. `src/app/__favicon.ico` inert (prefix `__`
    diabaikan Next).
-8. Tambah halaman detail treatment/doctor selain `braces` dan `kalya` (yang tanpa slug,
-   CTA-nya jatuh ke WhatsApp). Sitemap ikut otomatis — ia membaca `doctorList` +
-   `treatmentDetails`.
+8. ~~Tambah halaman detail treatment/doctor selain `braces` dan `kalya`~~ **DONE 2026-09-15**:
+   22 treatment detail + 10 doctor detail dibangun dari brief docx (copy Final), foto masih
+   placeholder (`TODO(assets)` di `src/lib/data/treatment-detail.ts` & `doctor-detail.ts`).
+   Sitemap ikut otomatis — ia membaca `doctorList` + `treatmentDetails`.
 9. Putuskan apakah treatments/doctors/konten home perlu jadi CMS-driven. Kalau ya, backend
    perlu menyediakan endpoint-nya dulu; type di file `src/lib/data/*` bisa jadi kontrak awal.
 10. Tracking pixel: GA/GTM/FB Pixel milik Onyx sudah dihapus. Kalau Smile Concept punya ID

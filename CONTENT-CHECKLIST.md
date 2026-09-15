@@ -43,10 +43,17 @@ untuk tahu **apa yang sudah jadi dan apa yang tersisa**. Detail per item ada di 
 - [ ] **1.8 — 9 logo asuransi baru** (FPG, Pacific Cross, Mega, Cigna, Reliance, Etiqa, ACA, MAG,
       Jasindo, BRI Life, China Life). Teks label section sudah diganti; tinggal logonya.
       → Juga konfirmasi: **AdMedika & AIA** ada di kode tapi tidak ada di daftar 15 brief.
-- [ ] **3.2 — 22 halaman treatment detail**. Copy ada di docx; tiap halaman butuh 1 foto hero +
-      3 foto before/after.
-- [ ] **5.2 — 10 profil dokter** (Lidya, Grestyasanti, Ines, Awaludin, Albar, Benazir, Kartika,
-      Julia, Kevin, Qaiszara). Copy ada di docx; butuh foto per dokter.
+- [x] **3.2 — 22 halaman treatment detail DIBANGUN (2026-09-15)** — copy Final dari docx sudah
+      masuk ke `src/lib/data/treatment-detail.ts`; hero + before/after memakai `Placeholder.png`
+      (ditandai `TODO(assets)`). Sisa pekerjaan: **tinggal tukar file fotonya** saat aset klien
+      datang. Caption before/after hanya tersedia untuk sebagian treatment (sisanya "⚠️ Needs
+      content" di docx → dipakai label generik "Before & After").
+- [x] **5.2 — 10 profil dokter DIBANGUN (2026-09-15)** — copy Final dari docx masuk ke
+      `src/lib/data/doctor-detail.ts`, listing `/doctors` kini menautkan slug ke semua dokter.
+      Foto detail memakai foto listing yang sama; **tinggal tukar** saat foto final dari Drive
+      tersedia. Catatan: beberapa typo docx diperbaiki ("Dental Sp" → "Dental Spa",
+      "Penambalan Gig" → "Penambalan Gigi", "Full Mouth Rehabilitatio" → "Full Mouth
+      Rehabilitation", "Konsultas" → "Konsultasi") — konfirmasi ke klien.
 - [ ] **Ganti 2 placeholder** yang sekarang dipakai — cari `TODO(assets)` di kode:
       kartu treatment ke-4 di `src/sections/home/treatments.tsx`, kategori 4 di
       `src/app/treatments/page.tsx`.
