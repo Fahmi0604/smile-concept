@@ -27,8 +27,10 @@ export const API_BASE_URL =
 const REVALIDATE_SETTINGS = process.env.NODE_ENV === "development" ? 60 : 43200; // prod: 12 hours
 const REVALIDATE_CONTENT = process.env.NODE_ENV === "development" ? 60 : 3600; // prod: 1 hour
 
-/** WhatsApp number used when the CMS has none configured. */
-const FALLBACK_WHATSAPP = "6281286632240";
+/** WhatsApp number used when the CMS has none configured — the clinic's
+ *  real number (matches the live CMS settings), so a CMS outage still shows
+ *  a correct contact. */
+const FALLBACK_WHATSAPP = "628111577137";
 const WHATSAPP_MESSAGE =
   "Halo Smile Concept, saya ingin konsultasi untuk perawatan gigi saya ya";
 

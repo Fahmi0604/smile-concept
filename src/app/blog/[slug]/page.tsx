@@ -8,7 +8,7 @@ import { getPostBySlug, getSettings } from "@/lib/api";
 import { metaData } from "@/lib/utils/metadata";
 import { stripInlineStyles } from "@/lib/utils/html";
 import { Shell } from "@/components/Shell";
-import JsonLd from "@/lib/components/JsonLd";
+import JsonLd, { blogPostingJsonLd } from "@/lib/components/JsonLd";
 
 export const revalidate = 60;
 export const dynamicParams = true;
@@ -78,7 +78,7 @@ export default async function BlogArticlePage({
 
   return (
     <>
-      <JsonLd schemaType="BlogPosting" data={post} />
+      <JsonLd jsonLd={blogPostingJsonLd(post)} />
 
       <section className="bg-surface pt-[148px] pb-14 max-md:pt-30 max-md:pb-10">
         <Shell as="div">

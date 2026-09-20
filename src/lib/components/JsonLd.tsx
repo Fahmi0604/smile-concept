@@ -1,119 +1,80 @@
-// import { Blog } from '@prisma/client';
-import Head from "next/head";
+import { SITE_URL } from "@/lib/utils/metadata";
+import type { DoctorDetail } from "@/lib/data/doctor-detail";
 
-type Props = {
-  data: Partial<Post>;
-  schemaType: "WebPage" | "BlogPosting" | "Dentist" | "Person";
-};
-
-const generateJsonLd = ({ data, schemaType }: Props) => {
-  if (schemaType === "WebPage") {
-    return {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      name: "TechSpark",
-      url: "https://www.techspark.com",
-      potentialAction: {
-        "@type": "SearchAction",
-        target: "https://www.techspark.com/search?q={search_term_string}",
-        "query-input": "required name=search_term_string",
-      },
-    };
-    // {
-    //     "@context": "https://schema.org",
-    //     "@type": "Organization",
-    //     "name": "TechSpark",
-    //     "url": "https://www.techspark.com",
-    //     "logo": "https://www.techspark.com/logo.png",
-    //     "sameAs": [
-    //       "https://www.facebook.com/techspark",
-    //       "https://www.twitter.com/techspark"
-    //     ]
-    //   }
-  }
-
-  if (schemaType === 'BlogPosting') {
-    return {
-      '@context': 'https://schema.org',
-      '@type': 'BlogPosting',
-      headline: data.title ?? '',
-      description: data.description ?? '',
-      image: data.thumbnail?.url ?? '',
-      author: {
-        '@type': 'Person',
-        name: data?.author?.name ?? ''
-      },
-      datePublished: data.published_at ?? '',
-      publisher: {
-        '@type': 'Organization',
-        name: 'Smile Concept',
-        logo: {
-          '@type': 'ImageObject',
-          url: 'https://smileconcept.id/assets/smile-concept/Logo1.png'
-        }
-      }
-    }
-  }
-
-  if (schemaType === "Dentist") {
-    return {
-      "@context": "https://schema.org",
-      "@type": "Dentist",
-      name: "BrightSmile Dental Clinic",
-      image: "https://brightsmile.com/images/clinic.jpg",
-      url: "https://brightsmile.com",
-      telephone: "+65 6123 4567",
-      address: {
-        "@type": "PostalAddress",
-        streetAddress: "123 Orchard Road, #05-01",
-        addressLocality: "Singapore",
-        postalCode: "238888",
-        addressCountry: "SG",
-      },
-      geo: {
-        "@type": "GeoCoordinates",
-        latitude: 1.3048,
-        longitude: 103.8318,
-      },
-      openingHours: ["Mo-Fr 09:00-18:00", "Sa 09:00-13:00"],
-      priceRange: "$$",
-      sameAs: [
-        "https://www.facebook.com/brightsmile",
-        "https://www.instagram.com/brightsmileclinic",
-      ],
-    };
-  }
-
-  if (schemaType === "Person") {
-    return {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      name: "Dr. Amanda Lee",
-      jobTitle: "Senior Dental Surgeon",
-      worksFor: {
-        "@type": "Dentist",
-        name: "BrightSmile Dental Clinic",
-      },
-      alumniOf: {
-        "@type": "EducationalOrganization",
-        name: "National University of Singapore",
-      },
-      medicalSpecialty: "Orthodontics",
-      url: "https://brightsmile.com/team/dr-amanda-lee",
-      image: "https://brightsmile.com/images/team/amanda.jpg",
-    };
-  }
-};
-
-export default function JsonLd({ data, schemaType }: Props) {
-  const jsonLd = generateJsonLd({ data, schemaType });
-
+/**
+ * Generic JSON-LD script renderer (App Router pattern — `next/head` does not
+ * work under app/). Build the schema object with one of the helpers below and
+ * pass it in.
+ */
+export default function JsonLd({ jsonLd }: { jsonLd: object }) {
   return (
-    <Head>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-    </Head>
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+    />
   );
+}
+
+/** BlogPosting schema for /blog/[slug] pages. */
+export function blogPostingJsonLd(data: Partial<Post>): object {
+  const postUrl = `${SITE_URL}/blog/${data.slug ?? ""}`;
+  return {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: data.title ?? "",
+    description: data.description ?? "",
+    image: data.thumbnail?.url ?? "",
+    url: postUrl,
+    mainEntityOfPage: postUrl,
+    author: {
+      "@type": "Person",
+      name: data?.author?.name ?? "",
+    },
+    datePublished: data.published_at ?? "",
+    publisher: {
+      "@type": "Organization",
+      name: "Smile Concept",
+      logo: {
+        "@type": "ImageObject",
+        url: `${SITE_URL}/assets/smile-concept/Logo1.png`,
+      },
+    },
+  };
+}
+
+/** Dentist (LocalBusiness) schema for the home page — real clinic data from
+ *  the CMS settings, with the same fallbacks the Footer uses. */
+export function dentistJsonLd(settings?: Setting): object {
+  const instagram = settings?.social_media?.instagram;
+  return {
+    "@context": "https://schema.org",
+    "@type": "Dentist",
+    name: "Smile Concept",
+    url: SITE_URL,
+    telephone: settings?.phone ?? "+62 811 157 7137",
+    image: `${SITE_URL}/assets/smile-concept/Logo1.png`,
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: settings?.address?.street ?? "Jl. Benda Raya No.5",
+      addressLocality: settings?.address?.city ?? "Jakarta Selatan",
+      addressCountry: "ID",
+    },
+    ...(instagram ? { sameAs: [instagram] } : {}),
+  };
+}
+
+/** Person schema for /doctors/[slug] pages — real data from doctor-detail. */
+export function personJsonLd(doctor: DoctorDetail, slug: string): object {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: doctor.name,
+    jobTitle: doctor.specialty,
+    image: `${SITE_URL}${doctor.image}`,
+    url: `${SITE_URL}/doctors/${slug}`,
+    worksFor: {
+      "@type": "Dentist",
+      name: "Smile Concept",
+    },
+  };
 }

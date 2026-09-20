@@ -13,10 +13,12 @@ export type DoctorDetail = {
   specialty: string;
   image: string;
   imageAlt: string;
-  /** transform-origin Y% for the detail photo (position knob — the
-   *  container aspect matches the photo, so object-position has no effect). */
+  /** Optional fine-tuning on top of the pre-cropped file (defaults are
+   *  no-ops, so leaving them unset keeps the crop as-authored).
+   *  - imageScale: zoom factor ("1" = none). Keep ≤ ~1.3 to stay sharp.
+   *  - imageOrigin: "X Y" — the photo point that stays pinned while
+   *    zooming; moving X pans the window left/right, Y up/down. */
   imageOrigin?: string;
-  /** transform scale for the detail photo. */
   imageScale?: string;
   schedule: DoctorScheduleSlot[];
   education: string[];
@@ -31,7 +33,8 @@ export const doctorDetails: Record<string, DoctorDetail> = {
     specialty: "Dokter gigi spesialis konservasi gigi",
     image: "/assets/smile-concept/Kalya.jpg",
     imageAlt: "drg. Kalya Putri, Sp.KG",
-    imageOrigin: "center 16%",
+    imageScale: "1.2",
+    imageOrigin: "75% 70%",
     schedule: [
       { day: "Senin", time: "10:00 – 14:00" },
       { day: "Jumat", time: "15:00 – 18:00" },
@@ -55,8 +58,9 @@ export const doctorDetails: Record<string, DoctorDetail> = {
     name: "drg. Lidya Wati Budhy, Sp.Ort",
     specialty: "Dokter gigi spesialis ortodonti",
     image: `/assets/smile-concept/Lidya.jpg`,
-    imageAlt: "drg. Lidya Wati Budhy, Sp.Ort",
-    imageOrigin: "center 13%",
+    imageAlt: `drg. Lidya Wati Budhy, Sp.Ort`,
+    imageScale: "1.2",
+    imageOrigin: "center 90%",
     schedule: [
       { day: "Jumat", time: "11.00 - 18.00 WIB" },
       { day: "Minggu", time: "10.00 - 17.00 WIB" },
@@ -78,7 +82,9 @@ export const doctorDetails: Record<string, DoctorDetail> = {
     name: "drg. Grestyasanti Wimasan, Sp.KG",
     specialty: "Dokter gigi spesialis konservasi gigi",
     image: `/assets/smile-concept/Grestyasanti.jpg`,
-    imageAlt: "drg. Grestyasanti Wimasan, Sp.KG",
+    imageAlt: `drg. Grestyasanti Wimasan, Sp.KG`,
+    imageScale: "1.2",
+    imageOrigin: "center 100%",
     schedule: [
       { day: "Senin", time: "10.00 - 12.00 WIB" },
       { day: "Sabtu", time: "(by appointment)" },
@@ -101,8 +107,9 @@ export const doctorDetails: Record<string, DoctorDetail> = {
     name: "drg. Ines Augustina S, Sp.Perio",
     specialty: "Dokter gigi spesialis periodonsia",
     image: `/assets/smile-concept/Ines.jpg`,
-    imageAlt: "drg. Ines Augustina S, Sp.Perio",
-    imageOrigin: "center 18%",
+    imageAlt: `drg. Ines Augustina S, Sp.Perio`,
+    imageScale: "1.2",
+    imageOrigin: "75% 70%",
     schedule: [
       { day: "(by appointment)", time: "" },
     ],
@@ -124,8 +131,9 @@ export const doctorDetails: Record<string, DoctorDetail> = {
     name: "drg. Awaludin Wibawa, Sp.BM",
     specialty: "Dokter gigi spesialis bedah mulut",
     image: `/assets/smile-concept/Awaludin.jpg`,
-    imageAlt: "drg. Awaludin Wibawa, Sp.BM",
-    imageOrigin: "center 12%",
+    imageAlt: `drg. Awaludin Wibawa, Sp.BM`,
+    imageScale: "1.2",
+    imageOrigin: "75% center",
     schedule: [
       { day: "(by appointment)", time: "" },
     ],
@@ -148,8 +156,8 @@ export const doctorDetails: Record<string, DoctorDetail> = {
     name: "drg. Albar Abshar Muhamad, Sp.Pros",
     specialty: "Dokter gigi spesialis prostodonti",
     image: `/assets/smile-concept/Albar.jpg`,
-    imageAlt: "drg. Albar Abshar Muhamad, Sp.Pros",
-    imageOrigin: "center 2%",
+    imageAlt: `drg. Albar Abshar Muhamad, Sp.Pros`,
+    imageOrigin: "0% center",
     schedule: [
       { day: "(by appointment)", time: "" },
     ],
@@ -171,7 +179,9 @@ export const doctorDetails: Record<string, DoctorDetail> = {
     name: "drg. Qaiszara Puspadewi",
     specialty: "Dokter gigi umum",
     image: `/assets/smile-concept/Qaiszara.jpg`,
-    imageAlt: "drg. Qaiszara Puspadewi",
+    imageAlt: `drg. Qaiszara Puspadewi`,
+    imageOrigin: "90% 80%",
+    imageScale: "1.2",
     schedule: [
       { day: "Rabu", time: "10.00 - 20.00 WIB" },
       { day: "Minggu", time: "13.30 - 17.00 WIB" },
@@ -193,7 +203,9 @@ export const doctorDetails: Record<string, DoctorDetail> = {
     name: "drg. Kartika Devy",
     specialty: "Dokter gigi umum",
     image: `/assets/smile-concept/Kartika.jpg`,
-    imageAlt: "drg. Kartika Devy",
+    imageAlt: `drg. Kartika Devy`,
+    imageOrigin: "10% center",
+    imageScale: "1.2",
     schedule: [
       { day: "Senin", time: "10.00 - 14.00 WIB (on call)" },
       { day: "Sabtu", time: "10.00 - 15.00 WIB" },
@@ -215,7 +227,7 @@ export const doctorDetails: Record<string, DoctorDetail> = {
     name: "drg. Julia Dharmawan",
     specialty: "Dokter gigi umum",
     image: `/assets/smile-concept/Julia.jpg`,
-    imageAlt: "drg. Julia Dharmawan",
+    imageAlt: `drg. Julia Dharmawan`,
     schedule: [
       { day: "Senin & Kamis", time: "(by appointment)" },
       { day: "Minggu", time: "10.00 - 13.00 WIB" },
@@ -238,8 +250,9 @@ export const doctorDetails: Record<string, DoctorDetail> = {
     name: "drg. Kevin Brianshah",
     specialty: "Dokter gigi umum",
     image: `/assets/smile-concept/Kevin.jpg`,
-    imageAlt: "drg. Kevin Brianshah",
-    imageOrigin: "center 8%",
+    imageAlt: `drg. Kevin Brianshah`,
+    imageScale: "1.2",
+    imageOrigin: "center 85%",
     schedule: [
       { day: "Senin", time: "12.00 - 16.00 WIB" },
       { day: "Minggu", time: "14.00 - 17.00 WIB" },
@@ -261,8 +274,9 @@ export const doctorDetails: Record<string, DoctorDetail> = {
     name: "drg. Benazir Amriza Dini, Sp.Ort.",
     specialty: "Dokter gigi spesialis ortodonti",
     image: `/assets/smile-concept/Benazir.jpg`,
-    imageAlt: "drg. Benazir Amriza Dini, Sp.Ort.",
-    imageOrigin: "center 3%",
+    imageAlt: `drg. Benazir Amriza Dini, Sp.Ort.`,
+    imageScale: "1",
+    imageOrigin: "0% center",
     schedule: [
       { day: "Selasa", time: "16.00 - 20.00 WIB" },
       { day: "Sabtu", time: "09.00 - 15.00 WIB" },

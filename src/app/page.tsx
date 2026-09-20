@@ -11,6 +11,7 @@ import Promo from "@/sections/home/promo";
 import Facility from "@/sections/home/facility";
 import Testimonial from "@/sections/home/testimonial";
 import CtaBlock from "@/sections/home/cta-block";
+import JsonLd, { dentistJsonLd } from "@/lib/components/JsonLd";
 import { Metadata } from "next";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -27,6 +28,7 @@ export default async function Home() {
 
   return (
     <>
+      <JsonLd jsonLd={dentistJsonLd(settings.data)} />
       <HomeHero settings={settings.data} />
       <StatsBar settings={settings.data} />
       <Treatments />

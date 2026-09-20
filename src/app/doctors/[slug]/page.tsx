@@ -6,6 +6,7 @@ import { metaData } from "@/lib/utils/metadata";
 import { getSettings } from "@/lib/api";
 import { getDoctorDetail, doctorDetails, type DoctorDetail } from "@/lib/data/doctor-detail";
 import { Shell } from "@/components/Shell";
+import JsonLd, { personJsonLd } from "@/lib/components/JsonLd";
 
 export function generateStaticParams() {
   return Object.keys(doctorDetails).map((slug) => ({ slug }));
@@ -51,6 +52,7 @@ export default async function DoctorDetailPage({
 
   return (
     <>
+      <JsonLd jsonLd={personJsonLd(doctor, slug)} />
       <section className="bg-white pt-30 pb-10 md:pt-[148px] md:pb-14">
         <Shell as="div">
           <h1 className="h2 text-ink mb-2">{doctor.name}</h1>
@@ -84,12 +86,12 @@ export default async function DoctorDetailPage({
                 fill
                 priority
                 sizes="(max-width: 767px) 100vw, 50vw"
-                // Per-doctor framing from doctor-detail.ts: the container
-                // aspect nearly matches the photo, so transform-origin (not
-                // object-position) is the position knob here.
+                // Optional per-doctor fine-tuning (doctor-detail.ts).
+                // Defaults are no-ops: scale 1 + center origin renders the
+                // pre-cropped file exactly as authored.
                 style={{
-                  transform: `scale(${doctor.imageScale ?? "2.5"})`,
-                  transformOrigin: doctor.imageOrigin ?? "center 16%",
+                  transform: `scale(${doctor.imageScale ?? "1"})`,
+                  transformOrigin: doctor.imageOrigin ?? "center",
                 }}
                 className="object-cover"
               />
