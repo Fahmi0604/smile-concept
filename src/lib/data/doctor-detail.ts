@@ -24,7 +24,7 @@ export const doctorDetails: Record<string, DoctorDetail> = {
     slug: "kalya",
     name: "drg. Kalya Putri, Sp.KG",
     specialty: "Dokter gigi spesialis konservasi gigi",
-    image: "/assets/smile-concept/Kalya.png",
+    image: "/assets/smile-concept/Kalya.jpg",
     imageAlt: "drg. Kalya Putri, Sp.KG",
     schedule: [
       { day: "Senin", time: "10:00 – 14:00" },
@@ -50,7 +50,7 @@ export const doctorDetails: Record<string, DoctorDetail> = {
     specialty: "Dokter gigi spesialis ortodonti",
     // TODO(assets): reuses the listing photo; brief Final photo lives on
     // Google Drive and must be replaced when delivered.
-    image: `/assets/smile-concept/Lidya.png`,
+    image: `/assets/smile-concept/Lidya.jpg`,
     imageAlt: "drg. Lidya Wati Budhy, Sp.Ort",
     schedule: [
       { day: "Jumat", time: "11.00 - 18.00 WIB" },
@@ -74,7 +74,7 @@ export const doctorDetails: Record<string, DoctorDetail> = {
     specialty: "Dokter gigi spesialis konservasi gigi",
     // TODO(assets): reuses the listing photo; brief Final photo lives on
     // Google Drive and must be replaced when delivered.
-    image: `/assets/smile-concept/Grestyasanti.png`,
+    image: `/assets/smile-concept/Grestyasanti.jpg`,
     imageAlt: "drg. Grestyasanti Wimasan, Sp.KG",
     schedule: [
       { day: "Senin", time: "10.00 - 12.00 WIB" },
@@ -99,7 +99,7 @@ export const doctorDetails: Record<string, DoctorDetail> = {
     specialty: "Dokter gigi spesialis periodonsia",
     // TODO(assets): reuses the listing photo; brief Final photo lives on
     // Google Drive and must be replaced when delivered.
-    image: `/assets/smile-concept/Ines.png`,
+    image: `/assets/smile-concept/Ines.jpg`,
     imageAlt: "drg. Ines Augustina S, Sp.Perio",
     schedule: [
       { day: "(by appointment)", time: "" },
@@ -123,7 +123,7 @@ export const doctorDetails: Record<string, DoctorDetail> = {
     specialty: "Dokter gigi spesialis bedah mulut",
     // TODO(assets): reuses the listing photo; brief Final photo lives on
     // Google Drive and must be replaced when delivered.
-    image: `/assets/smile-concept/Awaludin.png`,
+    image: `/assets/smile-concept/Awaludin.jpg`,
     imageAlt: "drg. Awaludin Wibawa, Sp.BM",
     schedule: [
       { day: "(by appointment)", time: "" },
@@ -148,7 +148,7 @@ export const doctorDetails: Record<string, DoctorDetail> = {
     specialty: "Dokter gigi spesialis prostodonti",
     // TODO(assets): reuses the listing photo; brief Final photo lives on
     // Google Drive and must be replaced when delivered.
-    image: `/assets/smile-concept/Albar.png`,
+    image: `/assets/smile-concept/Albar.jpg`,
     imageAlt: "drg. Albar Abshar Muhamad, Sp.Pros",
     schedule: [
       { day: "(by appointment)", time: "" },
@@ -172,7 +172,7 @@ export const doctorDetails: Record<string, DoctorDetail> = {
     specialty: "Dokter gigi umum",
     // TODO(assets): reuses the listing photo; brief Final photo lives on
     // Google Drive and must be replaced when delivered.
-    image: `/assets/smile-concept/Qaiszara.png`,
+    image: `/assets/smile-concept/Qaiszara.jpg`,
     imageAlt: "drg. Qaiszara Puspadewi",
     schedule: [
       { day: "Rabu", time: "10.00 - 20.00 WIB" },
@@ -196,7 +196,7 @@ export const doctorDetails: Record<string, DoctorDetail> = {
     specialty: "Dokter gigi umum",
     // TODO(assets): reuses the listing photo; brief Final photo lives on
     // Google Drive and must be replaced when delivered.
-    image: `/assets/smile-concept/Kartika.png`,
+    image: `/assets/smile-concept/Kartika.jpg`,
     imageAlt: "drg. Kartika Devy",
     schedule: [
       { day: "Senin", time: "10.00 - 14.00 WIB (on call)" },
@@ -220,7 +220,7 @@ export const doctorDetails: Record<string, DoctorDetail> = {
     specialty: "Dokter gigi umum",
     // TODO(assets): reuses the listing photo; brief Final photo lives on
     // Google Drive and must be replaced when delivered.
-    image: `/assets/smile-concept/Julia.png`,
+    image: `/assets/smile-concept/Julia.jpg`,
     imageAlt: "drg. Julia Dharmawan",
     schedule: [
       { day: "Senin & Kamis", time: "(by appointment)" },
@@ -245,7 +245,7 @@ export const doctorDetails: Record<string, DoctorDetail> = {
     specialty: "Dokter gigi umum",
     // TODO(assets): reuses the listing photo; brief Final photo lives on
     // Google Drive and must be replaced when delivered.
-    image: `/assets/smile-concept/Kevin.png`,
+    image: `/assets/smile-concept/Kevin.jpg`,
     imageAlt: "drg. Kevin Brianshah",
     schedule: [
       { day: "Senin", time: "12.00 - 16.00 WIB" },
@@ -269,7 +269,7 @@ export const doctorDetails: Record<string, DoctorDetail> = {
     specialty: "Dokter gigi spesialis ortodonti",
     // TODO(assets): reuses the listing photo; brief Final photo lives on
     // Google Drive and must be replaced when delivered.
-    image: `/assets/smile-concept/Benazir.png`,
+    image: `/assets/smile-concept/Benazir.jpg`,
     imageAlt: "drg. Benazir Amriza Dini, Sp.Ort.",
     schedule: [
       { day: "Selasa", time: "16.00 - 20.00 WIB" },
