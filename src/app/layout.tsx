@@ -13,7 +13,6 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="icon" type="image/png" sizes="96x96" href="/favicon.png" />
         {/* Smile Concept fonts (matches prototype) */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
