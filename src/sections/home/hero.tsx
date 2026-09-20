@@ -47,20 +47,25 @@ export default function HomeHero({ settings }: { settings: Setting }) {
       />
 
       <Shell className="relative flex flex-col pt-24 pb-0 md:pt-28 md:pb-14 lg:pt-[190px] lg:pb-[80px]">
-        <div className="flex w-full min-w-0 flex-col gap-3 md:max-w-[620px]">
+        <div className="flex w-full min-w-0 flex-col gap-3 md:max-w-[760px]">
           <p className="h3-subheadline text-ink">Designed for confidence in every moment</p>
           <h1
             id="hero-title"
-            className="h1-display text-ink flex w-full flex-row items-center justify-between leading-none max-md:justify-start max-md:gap-5"
+            className={["h1-display text-ink flex w-full flex-row items-center justify-start gap-5 leading-none",
+              // Prototype overrides the display scale for the hero only:
+              // 72px from tablet up, clamp(32–48px) on mobile.
+              "md:text-[72px]",
+              "max-md:gap-3 max-md:text-[clamp(32px,10.2vw,48px)] max-md:flex-nowrap",
+            ].join(" ")}
           >
-            <span>Better</span>
+            <span className="max-md:whitespace-nowrap">Own Your</span>
             <span
               aria-hidden="true"
-              className="inline-flex shrink-0 items-center w-[65px] max-md:w-[clamp(28px,7vw,44px)]"
+              className="inline-flex shrink-0 items-center w-[65px] max-md:w-[clamp(22px,6vw,36px)]"
             >
               <SwooshSvg />
             </span>
-            <span>Smile</span>
+            <span className="max-md:whitespace-nowrap">Smile</span>
           </h1>
         </div>
 

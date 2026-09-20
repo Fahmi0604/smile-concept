@@ -97,11 +97,6 @@ export async function getPostsForSitemap(): Promise<CmsResponse<Post[]>> {
 
 /* ------------------------------------------------------------------- promos */
 
-function toStringOrEmpty(value: string | number | null | undefined): string {
-  if (value === null || value === undefined) return "";
-  return String(value);
-}
-
 function toPerks(value: string[] | string | null | undefined): string[] {
   if (Array.isArray(value)) return value.filter(Boolean);
   if (typeof value === "string") {
@@ -113,31 +108,59 @@ function toPerks(value: string[] | string | null | undefined): string[] {
   return [];
 }
 
+/** "Rp9.000.000" — matches the prototype's price formatting (no space). */
+function formatIDR(value: number): string {
+  return `Rp${new Intl.NumberFormat("id-ID").format(value)}`;
+}
+
+/** Strips HTML tags and collapses the result into plain text lines. */
+function htmlToLines(html: string): string[] {
+  return html
+    .replace(/<[^>]*>/g, "\n")
+    .split(/\r?\n/)
+    .map((line) => line.trim())
+    .filter(Boolean);
+}
+
 /**
  * Translates a raw CMS promo into the shape `PromoCard` renders.
  *
- * ⚠️ The CMS had zero promos when this was written, so the field names below are
- * inferred, not observed. This function is deliberately the ONLY place that
- * knows the raw shape — when real promo data exists, fix it here and in the
- * `CmsPromo` type; no component needs to change.
+ * Field mapping (schema provided by the backend 2026-09-15, CMS still empty at
+ * the time — re-verify against a live row once one exists):
+ *   - perks ← `description`, one bullet per line; falls back to tag-stripped
+ *     `content` when the description is empty.
+ *   - prices ← numeric `price` / `discounted_price` (0 = absent). The
+ *     prototype's multi-line price lists (per-treatment pricing) cannot come
+ *     from these numeric fields — CMS entries needing one should put the list
+ *     in `description` and leave prices at 0.
+ *   - badge ← intentionally empty: the revised design dropped discount badges.
+ *   - featured ← `is_highlighted`, which curates the 3 home-section promos.
  */
 export function toPromoView(promo: CmsPromo): Promo {
-  const priceOriginal =
-    toStringOrEmpty(promo.price_original) || toStringOrEmpty(promo.price_before);
-  const priceCurrent =
-    toStringOrEmpty(promo.price_after) || toStringOrEmpty(promo.price);
+  const perks = toPerks(promo.description);
 
   return {
-    id: promo.id,
+    id: String(promo.id),
     title: promo.title,
-    image: promo.thumbnail?.url ?? "/assets/smile-concept/Placeholder.png",
-    alt: promo.thumbnail?.alt ?? promo.title,
-    badge: promo.badge ?? toStringOrEmpty(promo.discount),
-    perks: toPerks(promo.perks ?? promo.benefits),
-    priceOriginal,
-    priceCurrent,
-    ctaTag: `promo-${promo.slug ?? promo.id}`,
-    ctaUrl: promo.cta?.url ?? undefined,
+    image: promo.image?.url ?? "/assets/smile-concept/Placeholder.png",
+    alt: promo.image?.alt || promo.image?.title || promo.title,
+    badge: "",
+    perks:
+      perks.length > 0
+        ? perks
+        : typeof promo.content === "string"
+          ? htmlToLines(promo.content)
+          : [],
+    priceOriginal: promo.price > 0 ? formatIDR(promo.price) : "",
+    priceCurrent:
+      promo.discounted_price > 0
+        ? formatIDR(promo.discounted_price)
+        : promo.price > 0
+          ? formatIDR(promo.price)
+          : "",
+    ctaTag: `promo-${promo.slug || promo.id}`,
+    ctaUrl: promo.cta_link || undefined,
+    featured: Boolean(promo.is_highlighted),
   };
 }
 
@@ -145,6 +168,7 @@ export function toPromoView(promo: CmsPromo): Promo {
  * Promo list. Falls back to the static promos from the prototype when the CMS is
  * unreachable OR has no promos published — the promo page would otherwise be a
  * blank grid, and as of now the CMS genuinely returns an empty list.
+ * Inactive promos (`is_active: false`) are filtered out.
  */
 export async function getPromos(): Promise<CmsResponse<Promo[]>> {
   try {
@@ -156,11 +180,15 @@ export async function getPromos(): Promise<CmsResponse<Promo[]>> {
       },
     );
 
-    if (!res?.data?.length) {
+    const active = Array.isArray(res?.data)
+      ? res.data.filter((promo) => promo.is_active !== false)
+      : [];
+
+    if (!active.length) {
       return { success: true, message: "Fallback promos", data: fallbackPromos };
     }
 
-    return { ...res, data: res.data.map(toPromoView) };
+    return { ...res, data: active.map(toPromoView) };
   } catch (error) {
     console.error("Failed to fetch promos:", error);
     return { success: true, message: "Fallback promos", data: fallbackPromos };

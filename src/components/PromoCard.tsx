@@ -51,18 +51,25 @@ export function PromoCard({ promo, bookHref }: { promo: Promo; bookHref: string 
                 {promo.priceOriginal}
               </span>
             )}
-            {promo.priceCurrent && (
-              <span
-                className={[
-                  "font-subhead font-semibold whitespace-pre-line text-ink",
-                  promo.priceCurrent.length > 40
-                    ? "text-[16px] leading-[1.45]"
-                    : "text-[24px] leading-[1.2]",
-                ].join(" ")}
-              >
-                {promo.priceCurrent}
-              </span>
-            )}
+            {promo.priceCurrent &&
+              // Multi-line price = the prototype's per-treatment price list
+              // (16px/500, 2px gaps); single price renders big (24px/600).
+              (promo.priceCurrent.includes("\n") ? (
+                <span className="flex flex-col gap-[2px]">
+                  {promo.priceCurrent.split("\n").map((line) => (
+                    <span
+                      key={line}
+                      className="font-subhead text-[16px] font-medium leading-[1.4] text-ink"
+                    >
+                      {line}
+                    </span>
+                  ))}
+                </span>
+              ) : (
+                <span className="font-subhead font-semibold whitespace-pre-line text-[24px] leading-[1.2] text-ink">
+                  {promo.priceCurrent}
+                </span>
+              ))}
           </div>
         )}
         <Link

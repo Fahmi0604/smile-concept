@@ -40,9 +40,10 @@ untuk tahu **apa yang sudah jadi dan apa yang tersisa**. Detail per item ada di 
 
 ## Tersisa — diblokir ASET (butuh file gambar dari klien)
 
-- [ ] **1.8 — 9 logo asuransi baru** (FPG, Pacific Cross, Mega, Cigna, Reliance, Etiqa, ACA, MAG,
-      Jasindo, BRI Life, China Life). Teks label section sudah diganti; tinggal logonya.
-      → Juga konfirmasi: **AdMedika & AIA** ada di kode tapi tidak ada di daftar 15 brief.
+- [x] **1.8 — logo asuransi DISELESAIKAN (2026-09-15)** — 15 logo asli (`0_Home_Insurance1–15`)
+      diambil dari repo prototype revisi dan dipasang di marquee. **AdMedika & AIA dihapus** —
+      revisi prototype tidak memakai keduanya (menjawab pertanyaan #7). Nama alt mengikuti docx:
+      logo 12 adalah **BRI Life** (revisi HTML salah label "BCA Life" dua kali).
 - [x] **3.2 — 22 halaman treatment detail DIBANGUN (2026-09-15)** — copy Final dari docx sudah
       masuk ke `src/lib/data/treatment-detail.ts`; hero + before/after memakai `Placeholder.png`
       (ditandai `TODO(assets)`). Sisa pekerjaan: **tinggal tukar file fotonya** saat aset klien
@@ -54,25 +55,37 @@ untuk tahu **apa yang sudah jadi dan apa yang tersisa**. Detail per item ada di 
       tersedia. Catatan: beberapa typo docx diperbaiki ("Dental Sp" → "Dental Spa",
       "Penambalan Gig" → "Penambalan Gigi", "Full Mouth Rehabilitatio" → "Full Mouth
       Rehabilitation", "Konsultas" → "Konsultasi") — konfirmasi ke klien.
-- [ ] **Ganti 2 placeholder** yang sekarang dipakai — cari `TODO(assets)` di kode:
-      kartu treatment ke-4 di `src/sections/home/treatments.tsx`, kategori 4 di
-      `src/app/treatments/page.tsx`.
+- [x] **Placeholder home & /treatments DISELESAIKAN (2026-09-15)** — foto asli
+      `0_Home_Treatment1–4.jpg` dipasang di home switcher + 4 kategori listing (object-position
+      68% / 55% sesuai prototype).
+- [x] **3 placeholder facility DISELESAIKAN (2026-09-15)** — 6 foto asli
+      (`0_Home_facility1–6.jpg`) + **caption di bawah foto** (elemen UI baru dari revisi
+      prototype; caption identik dengan docx Final).
+- [x] **Transformations, testimonial, promo cards DISELESAIKAN (2026-09-15)** — 5 foto
+      before/after asli (`0_Home_BA1–5.jpg`), foto testimonial asli (`0_Home_Testimonial.jpg`),
+      11 foto kartu promo asli (`3_promo1–11.jpg`).
 
 ## Tersisa — diblokir KEPUTUSAN (butuh jawaban klien)
 
-- [ ] **1.9 — caption carousel facility.** Teksnya sudah lengkap di bagian 1.9. Yang belum ada
-      adalah **tempat menaruhnya** — prototype tidak punya caption di carousel sama sekali.
-      Butuh acuan desain (overlai di atas foto / di bawah / di samping).
-- [ ] **Daftar promo mana yang berlaku.** Docx memberi 2 set berbeda: 11 promo di bagian Home,
-      2 promo di halaman Promo, tanpa irisan. Karena kini satu sumber, harus satu daftar.
-- [ ] **Judul kategori 4 beda antar halaman.** Sudah ditulis apa adanya sesuai brief masing-masing
-      (`Helping You Raise Confident Smile` di home vs `Helping Your Kids...` di /treatments).
-      Konfirmasi apakah disengaja.
+- [x] **1.9 — caption carousel facility DISELESAIKAN (2026-09-15)** — revisi prototype menaruh
+      caption **di bawah foto** (`margin-top: 20px`, style `caption`); sudah diterapkan.
+- [x] **Daftar promo DISELESAIKAN (2026-09-15)** — revisi prototype memakai 11 promo docx Home
+      sebagai isi `/promo`, dan menyorot 3 di antaranya (Behel Konvensional, Behel Self-Ligating,
+      Aligner Invisalign) di home. Fallback statis kini 11 promo asli; CMS punya field
+      `is_highlighted` untuk kurasi home.
+- [x] **Judul kategori 4 — disengaja (2026-09-15)** — revisi prototype tetap memakai
+      `Helping You Raise Confident Smile` di home dan `Helping Your Kids...` di /treatments.
 - [ ] **Penamaan `Painless Scaling` (detail) vs `Dental Spa` (list)** — perlu dipetakan agar slug konsisten.
 - [ ] **Promo CareNow** butuh logo pihak ketiga, bukan foto pasien — bentuk kartunya kemungkinan beda.
+- [x] **Badge diskon DIBUANG (2026-09-15)** — tidak satu pun promo di docx/prototype punya
+      persentase; kartu revisi tanpa badge. `PromoCard` tetap mendukung badge bila CMS mengirim.
 
 ## Tersisa — dikerjakan di CMS, bukan di kode
 
+- [x] **Skema promo CMS diketahui (2026-09-15)** — backend memberikan struktur `/promos/{id}`;
+      `CmsPromo` + `toPromoView()` ditulis ulang mengikuti skema asli (harga numerik → format
+      `Rp9.000.000`, perks dari `description`, `is_highlighted` → kurasi home, `is_active`
+      difilter). Bentuk list-item diasumsikan sama dengan detail — verifikasi saat ada data.
 - [ ] **Input semua promo** ke `/api/promos` (CMS masih kosong → situs pakai fallback statis prototype)
 - [ ] **Isi `/api/settings`** — masih data demo (`demo@clinic.com`, alamat Malang, telepon
       `+6282236180971`, socials `null`). Fallback di kode sudah benar sesuai brief, tapi **CMS

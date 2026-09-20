@@ -14,6 +14,7 @@ type Card = {
   id: string;
   title: string;
   desc: string;
+  image: string;
   alt: string;
 };
 
@@ -22,31 +23,36 @@ const CARDS: Card[] = [
     id: "damon-braces",
     title: "Damon Braces",
     desc: "Gentle, innovative alignment without the hassle.",
-    alt: "Before and after Damon braces treatment",
+    image: "/assets/smile-concept/0_Home_BA1.jpg",
+    alt: "Before and after Damon braces",
   },
   {
     id: "metal-braces",
     title: "Metal Braces",
     desc: "Align your teeth, elevate your confidence.",
-    alt: "Before and after metal braces treatment",
+    image: "/assets/smile-concept/0_Home_BA2.jpg",
+    alt: "Before and after metal braces",
   },
   {
     id: "dental-crown",
     title: "Dental Crown",
     desc: "Seamlessly restore the natural beauty of your smile.",
-    alt: "Before and after dental crown treatment",
+    image: "/assets/smile-concept/0_Home_BA3.jpg",
+    alt: "Before and after dental crown",
   },
   {
     id: "aesthetic-filling",
     title: "Aesthetic Filling",
     desc: "Seamless fillings that blend in perfectly.",
-    alt: "Before and after aesthetic filling treatment",
+    image: "/assets/smile-concept/0_Home_BA4.jpg",
+    alt: "Before and after aesthetic filling",
   },
   {
     id: "bleaching",
     title: "Bleaching",
     desc: "Fast, professional whitening for a radiant, brighter smile.",
-    alt: "Before and after bleaching treatment",
+    image: "/assets/smile-concept/0_Home_BA5.jpg",
+    alt: "Before and after teeth bleaching",
   },
 ];
 
@@ -101,12 +107,12 @@ export default function Transformations() {
                 className="basis-full pl-0 md:basis-[calc((100%-20px)/2)] lg:basis-[calc((100%-46px)/3.3)]"
               >
                 <Image
-                  src="/assets/smile-concept/Before_after.png"
+                  src={card.image}
                   alt={card.alt}
-                  width={800}
-                  height={1000}
+                  width={774}
+                  height={806}
                   sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 30vw"
-                  className="block w-full aspect-[4/5] rounded-[20px] object-cover"
+                  className="block w-full aspect-[774/806] rounded-[20px] object-cover"
                 />
                 <h3 className="h4 text-ink mt-3.5">{card.title}</h3>
                 <p className="caption text-ink mt-1.5">{card.desc}</p>

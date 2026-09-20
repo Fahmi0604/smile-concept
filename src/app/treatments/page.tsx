@@ -27,6 +27,8 @@ type Category = {
   id: string;
   title: string;
   image: string;
+  /** object-position for the category photo (prototype tunes framing per photo). */
+  imagePosition?: string;
   imageRight?: boolean;
   items: TreatmentItem[];
 };
@@ -35,7 +37,8 @@ const CATEGORIES: Category[] = [
   {
     id: "tx-cat-1",
     title: "For Your Perfect Smile Without Drama",
-    image: "/assets/smile-concept/ModelTreatment1.png",
+    image: "/assets/smile-concept/0_Home_Treatment1.jpg",
+    imagePosition: "68% center",
     items: [
       {
         name: "Dental Spa",
@@ -70,7 +73,7 @@ const CATEGORIES: Category[] = [
   {
     id: "tx-cat-2",
     title: "Restore Your Smile & Rise",
-    image: "/assets/smile-concept/ModelTreatment2.png",
+    image: "/assets/smile-concept/0_Home_Treatment2.jpg",
     imageRight: true,
     items: [
       {
@@ -98,7 +101,8 @@ const CATEGORIES: Category[] = [
   {
     id: "tx-cat-3",
     title: "No More Pain All the Gain",
-    image: "/assets/smile-concept/ModelTreatment3.png",
+    image: "/assets/smile-concept/0_Home_Treatment3.jpg",
+    imagePosition: "55% center",
     items: [
       {
         name: "Aesthetic filling",
@@ -128,11 +132,9 @@ const CATEGORIES: Category[] = [
     ],
   },
   {
-    // TODO(assets): brief menetapkan foto sendiri untuk kategori ini
-    // (0_Home_Treatment4). Sementara memakai placeholder sampai asetnya ada.
     id: "tx-cat-4",
     title: "Helping Your Kids Raise Confident Smile",
-    image: "/assets/smile-concept/Placeholder.png",
+    image: "/assets/smile-concept/0_Home_Treatment4.jpg",
     imageRight: true,
     items: [
       {
@@ -209,6 +211,7 @@ function CategorySection({
         width={600}
         height={800}
         sizes="(max-width: 767px) 100vw, 33vw"
+        style={category.imagePosition ? { objectPosition: category.imagePosition } : undefined}
         className="block h-full w-full object-cover object-top"
       />
     </div>

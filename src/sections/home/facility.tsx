@@ -14,38 +14,53 @@ type Slide = {
   id: string;
   src: string;
   alt: string;
+  caption: string;
+  /** object-position tweak from the prototype (framing per photo). */
+  position?: string;
 };
 
 const SLIDES: Slide[] = [
   {
     id: "facility-1",
-    src: "/assets/smile-concept/Facility1.png",
-    alt: "Dental treatment room facility",
+    src: "/assets/smile-concept/0_Home_facility1.jpg",
+    alt: "Air polishing and scaling unit",
+    caption:
+      "A painless scaling experience designed to keep your teeth clean and your treatment comfortable.",
+    position: "center 22%",
   },
   {
     id: "facility-2",
-    src: "/assets/smile-concept/Facility2.png",
-    alt: "Close-up of dental equipment",
+    src: "/assets/smile-concept/0_Home_facility2.jpg",
+    alt: "Clinician documenting treatment with a DSLR camera",
+    caption: "DSLR Camera for accurate documentation and treatment planning.",
+    position: "center 42%",
   },
   {
     id: "facility-3",
-    src: "/assets/smile-concept/Facility3.png",
-    alt: "Dentist team working in clinic facility",
+    src: "/assets/smile-concept/0_Home_facility3.jpg",
+    alt: "Smile Concept reception and waiting area",
+    caption: "A welcoming space designed for comfort while you wait.",
   },
   {
-    id: "facility-ph-1",
-    src: "/assets/smile-concept/Placeholder.png",
-    alt: "Facility placeholder image",
+    id: "facility-4",
+    src: "/assets/smile-concept/0_Home_facility4.jpg",
+    alt: "Dentist using an intraoral camera during examination",
+    caption:
+      "An intraoral camera provides a closer look at your oral condition for a more precise examination.",
   },
   {
-    id: "facility-ph-2",
-    src: "/assets/smile-concept/Placeholder.png",
-    alt: "Facility placeholder image",
+    id: "facility-5",
+    src: "/assets/smile-concept/0_Home_facility5.jpg",
+    alt: "Spacious treatment room with a dedicated dental unit",
+    caption:
+      "Spacious treatment rooms equipped with dedicated dental units for a more private and comfortable dental visit.",
   },
   {
-    id: "facility-ph-3",
-    src: "/assets/smile-concept/Placeholder.png",
-    alt: "Facility placeholder image",
+    id: "facility-6",
+    src: "/assets/smile-concept/0_Home_facility6.jpg",
+    alt: "Treatment room with dedicated dental units",
+    caption:
+      "Two dedicated dental units designed to provide a comfortable and efficient treatment experience.",
   },
 ];
 
@@ -105,8 +120,10 @@ export default function Facility() {
                   width={800}
                   height={600}
                   sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 30vw"
+                  style={slide.position ? { objectPosition: slide.position } : undefined}
                   className="block w-full aspect-[4/3] rounded-[14px] object-cover"
                 />
+                <p className="caption text-ink mt-5">{slide.caption}</p>
               </CarouselItem>
             ))}
           </CarouselContent>

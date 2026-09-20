@@ -124,36 +124,42 @@ declare type PostDetail = Post & {
 /* ------------------------------------------------------------------- promos */
 
 /**
- * ⚠️ UNVERIFIED — `/api/promos` returned an empty `data` array, so no live promo
- * has ever been observed. The fields below mirror the conventions the CMS uses
- * for posts (the only documented resource) and every one of them is optional so
- * that an unexpected payload degrades instead of crashing.
+ * Promo payload from the CMS (`/api/promos` list items and `/api/promos/{id}`
+ * detail — assumed identical; the detail shape below was provided by the
+ * backend on 2026-09-15 while the CMS still had no live promo rows, so the
+ * list-item shape is still unverified against real data).
  *
- * When the CMS has a real promo: re-hit the endpoint, correct this type, and fix
- * `toPromoView()` in `src/lib/api/index.ts` — that adapter is the single place
- * the raw payload is translated into what the UI renders.
+ * `toPromoView()` in `src/lib/api/index.ts` is the single place that translates
+ * this into what the UI renders.
  */
 declare type CmsPromo = {
-  id: string;
+  id: number;
   title: string;
-  slug?: string;
-  description?: string | null;
-  status?: CmsStatus;
-  thumbnail?: CmsMedia | null;
-  cta?: CmsCta | null;
-  /** Discount label the card shows in the corner badge, e.g. "40% off". */
-  badge?: string | null;
-  discount?: string | number | null;
-  /** Bullet list on the card. May arrive as an array or a newline string. */
-  perks?: string[] | string | null;
-  benefits?: string[] | string | null;
-  price?: string | number | null;
-  price_original?: string | number | null;
-  price_before?: string | number | null;
-  price_after?: string | number | null;
-  published_at?: string | null;
-  created_at?: string;
-  updated_at?: string;
+  slug: string;
+  code: string;
+  /** Short copy — assumed to carry the card's perk bullets (newline-separated). */
+  description: string;
+  /** Long copy (HTML) — for a future promo detail page. */
+  content: string;
+  is_active: boolean;
+  /** The home promo section highlights these (3 in the prototype). */
+  is_highlighted: boolean;
+  discount_type: string;
+  discount_value: number;
+  /** Regular price in rupiah; 0 = not set. */
+  price: number;
+  /** Promo price in rupiah; 0 = not set. */
+  discounted_price: number;
+  cta_text: string;
+  cta_link: string;
+  image: {
+    url: string;
+    alt: string;
+    title: string;
+  } | null;
+  expired_at: string;
+  created_at: string;
+  updated_at: string;
 };
 
 /**
@@ -174,6 +180,8 @@ declare type Promo = {
   ctaTag: string;
   /** Overrides the global WhatsApp link when the CMS sets a per-promo CTA. */
   ctaUrl?: string;
+  /** Prototype curates 3 promos for the home section; fallback marks them. */
+  featured?: boolean;
 };
 
 /* ----------------------------------------------------------------- settings */

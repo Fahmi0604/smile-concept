@@ -3,12 +3,23 @@ import { Shell } from "@/components/Shell";
 import { PromoCard } from "@/components/PromoCard";
 
 const INSURANCE_LOGOS = [
-  { src: "/assets/smile-concept/Allianz.png", alt: "Allianz" },
-  { src: "/assets/smile-concept/Zurich.png", alt: "Zurich" },
-  { src: "/assets/smile-concept/BCA.png", alt: "BCA Life" },
-  { src: "/assets/smile-concept/CHUBB.png", alt: "CHUBB" },
-  { src: "/assets/smile-concept/AdMedika.png", alt: "AdMedika" },
-  { src: "/assets/smile-concept/AIA.png", alt: "AIA" },
+  { src: "/assets/smile-concept/0_Home_Insurance1.webp", alt: "Allianz Partners" },
+  { src: "/assets/smile-concept/0_Home_Insurance2.png", alt: "FPG Insurance" },
+  { src: "/assets/smile-concept/0_Home_Insurance3.png", alt: "Pacific Cross Health Insurance" },
+  { src: "/assets/smile-concept/0_Home_Insurance4.png", alt: "Mega Insurance" },
+  { src: "/assets/smile-concept/0_Home_Insurance5.webp", alt: "Zurich" },
+  { src: "/assets/smile-concept/0_Home_Insurance6.png", alt: "Cigna" },
+  { src: "/assets/smile-concept/0_Home_Insurance7.png", alt: "Reliance Insurance" },
+  { src: "/assets/smile-concept/0_Home_Insurance8.png", alt: "Etiqa Insurance" },
+  { src: "/assets/smile-concept/0_Home_Insurance9.png", alt: "ACA Asuransi" },
+  { src: "/assets/smile-concept/0_Home_Insurance10.png", alt: "Asuransi MAG" },
+  { src: "/assets/smile-concept/0_Home_Insurance11.webp", alt: "Asuransi Jasindo" },
+  // Docx Final names logo 12 "BRI Life"; the revised HTML mislabels it as
+  // another BCA Life — docx wins.
+  { src: "/assets/smile-concept/0_Home_Insurance12.svg", alt: "BRI Life" },
+  { src: "/assets/smile-concept/0_Home_Insurance13.png", alt: "BCA Life" },
+  { src: "/assets/smile-concept/0_Home_Insurance14.png", alt: "Chubb" },
+  { src: "/assets/smile-concept/0_Home_Insurance15.png", alt: "China Life" },
 ];
 
 /** Jumlah kartu promo yang tampil di home; selebihnya ada di /promo. */
@@ -22,7 +33,12 @@ export default function Promo({
   promos: Promo[];
 }) {
   const bookHref = settings?.link_whatsapp || "https://wa.me/";
-  const cards = promos.slice(0, HOME_PROMO_LIMIT);
+  // CMS promos have no curation yet → plain top-3. The static fallback marks
+  // the 3 promos the prototype features on home; show those first (stable
+  // sort keeps the /promo page order for everything else).
+  const cards = [...promos]
+    .sort((a, b) => Number(Boolean(b.featured)) - Number(Boolean(a.featured)))
+    .slice(0, HOME_PROMO_LIMIT);
 
   return (
     <section

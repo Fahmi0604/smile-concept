@@ -10,34 +10,38 @@ type Treatment = {
   sub: string;
   image: string;
   alt: string;
+  /** object-position from the prototype (framing tuned per photo). */
+  position: string;
 };
 
 const TREATMENTS: Treatment[] = [
   {
     title: "For Your Perfect Smile Without Drama",
     sub: "Dental Spa, Braces, Invisalign, Bleaching, Veneer and Crown, Gingivectomy, Gum depigmentation, Smile Makeover",
-    image: "/assets/smile-concept/ModelTreatment1.png",
-    alt: "Patient with a confident, well-aligned smile",
+    image: "/assets/smile-concept/0_Home_Treatment1.jpg",
+    alt: "Patient with a bright, confident smile after aesthetic dental care",
+    position: "78% 20%",
   },
   {
     title: "Restore Your Smile & Rise",
     sub: "Full mouth rehabilitation, Removable denture, Dental implant, Fixed denture",
-    image: "/assets/smile-concept/ModelTreatment2.png",
-    alt: "Patient with a fully restored smile",
+    image: "/assets/smile-concept/0_Home_Treatment2.jpg",
+    alt: "Couple sharing restored, healthy smiles",
+    position: "55% 15%",
   },
   {
     title: "No More Pain All the Gain",
     sub: "Aesthetic filling, Root canal treatment, Tooth extraction, Odontectomy, Temporomandibular joint disorder treatment",
-    image: "/assets/smile-concept/ModelTreatment3.png",
-    alt: "Patient comfortable after restorative dental care",
+    image: "/assets/smile-concept/0_Home_Treatment3.jpg",
+    alt: "Patient smiling comfortably after restorative dental treatment",
+    position: "62% 20%",
   },
   {
-    // TODO(assets): brief menetapkan foto khusus (0_Home_Treatment4).
-    // Placeholder sampai asetnya tersedia.
     title: "Helping You Raise Confident Smile",
     sub: "Scaling for kids, Fluoride treatment, Pit and fissure sealant, Pulpotomy & Pulpectomy, Tooth extraction for kids, Kid’s braces",
-    image: "/assets/smile-concept/Placeholder.png",
-    alt: "Parent and child smiling together after a kids dental visit",
+    image: "/assets/smile-concept/0_Home_Treatment4.jpg",
+    alt: "Parent and child sharing a confident smile after pediatric dental care",
+    position: "50% 20%",
   },
 ];
 
@@ -83,8 +87,9 @@ export default function Treatments() {
                   fill
                   sizes="(max-width: 767px) 100vw, 42vw"
                   priority={i === 0}
+                  style={{ objectPosition: t.position }}
                   className={[
-                    "absolute inset-0 rounded-[20px] object-cover object-top transition-opacity duration-500",
+                    "absolute inset-0 rounded-[20px] object-cover transition-opacity duration-500",
                     i === active ? "opacity-100" : "opacity-0",
                   ].join(" ")}
                 />

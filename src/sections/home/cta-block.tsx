@@ -32,19 +32,6 @@ export default function CtaBlock({ settings }: { settings: Setting }) {
         ].join(" ")}
       />
 
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src="/assets/smile-concept/Reception.png"
-        alt=""
-        aria-hidden="true"
-        className={[
-          "pointer-events-none select-none",
-          "absolute right-0 bottom-0 h-full w-auto",
-          "max-md:relative max-md:right-auto max-md:bottom-auto",
-          "max-md:order-2 max-md:block max-md:h-auto max-md:w-full",
-        ].join(" ")}
-      />
-
       <Shell
         as="div"
         className={[
