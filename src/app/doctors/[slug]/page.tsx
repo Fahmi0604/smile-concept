@@ -84,7 +84,14 @@ export default async function DoctorDetailPage({
                 fill
                 priority
                 sizes="(max-width: 767px) 100vw, 50vw"
-                className="object-cover object-top"
+                // Per-doctor framing from doctor-detail.ts: the container
+                // aspect nearly matches the photo, so transform-origin (not
+                // object-position) is the position knob here.
+                style={{
+                  transform: `scale(${doctor.imageScale ?? "2.5"})`,
+                  transformOrigin: doctor.imageOrigin ?? "center 16%",
+                }}
+                className="object-cover"
               />
             </div>
 

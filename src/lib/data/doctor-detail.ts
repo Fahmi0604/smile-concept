@@ -13,6 +13,11 @@ export type DoctorDetail = {
   specialty: string;
   image: string;
   imageAlt: string;
+  /** transform-origin Y% for the detail photo (position knob — the
+   *  container aspect matches the photo, so object-position has no effect). */
+  imageOrigin?: string;
+  /** transform scale for the detail photo. */
+  imageScale?: string;
   schedule: DoctorScheduleSlot[];
   education: string[];
   expertise: string[];
@@ -26,6 +31,7 @@ export const doctorDetails: Record<string, DoctorDetail> = {
     specialty: "Dokter gigi spesialis konservasi gigi",
     image: "/assets/smile-concept/Kalya.jpg",
     imageAlt: "drg. Kalya Putri, Sp.KG",
+    imageOrigin: "center 16%",
     schedule: [
       { day: "Senin", time: "10:00 – 14:00" },
       { day: "Jumat", time: "15:00 – 18:00" },
@@ -48,10 +54,9 @@ export const doctorDetails: Record<string, DoctorDetail> = {
     slug: "lidya",
     name: "drg. Lidya Wati Budhy, Sp.Ort",
     specialty: "Dokter gigi spesialis ortodonti",
-    // TODO(assets): reuses the listing photo; brief Final photo lives on
-    // Google Drive and must be replaced when delivered.
     image: `/assets/smile-concept/Lidya.jpg`,
     imageAlt: "drg. Lidya Wati Budhy, Sp.Ort",
+    imageOrigin: "center 13%",
     schedule: [
       { day: "Jumat", time: "11.00 - 18.00 WIB" },
       { day: "Minggu", time: "10.00 - 17.00 WIB" },
@@ -72,8 +77,6 @@ export const doctorDetails: Record<string, DoctorDetail> = {
     slug: "grestyasanti",
     name: "drg. Grestyasanti Wimasan, Sp.KG",
     specialty: "Dokter gigi spesialis konservasi gigi",
-    // TODO(assets): reuses the listing photo; brief Final photo lives on
-    // Google Drive and must be replaced when delivered.
     image: `/assets/smile-concept/Grestyasanti.jpg`,
     imageAlt: "drg. Grestyasanti Wimasan, Sp.KG",
     schedule: [
@@ -97,10 +100,9 @@ export const doctorDetails: Record<string, DoctorDetail> = {
     slug: "ines",
     name: "drg. Ines Augustina S, Sp.Perio",
     specialty: "Dokter gigi spesialis periodonsia",
-    // TODO(assets): reuses the listing photo; brief Final photo lives on
-    // Google Drive and must be replaced when delivered.
     image: `/assets/smile-concept/Ines.jpg`,
     imageAlt: "drg. Ines Augustina S, Sp.Perio",
+    imageOrigin: "center 18%",
     schedule: [
       { day: "(by appointment)", time: "" },
     ],
@@ -121,10 +123,9 @@ export const doctorDetails: Record<string, DoctorDetail> = {
     slug: "awaludin",
     name: "drg. Awaludin Wibawa, Sp.BM",
     specialty: "Dokter gigi spesialis bedah mulut",
-    // TODO(assets): reuses the listing photo; brief Final photo lives on
-    // Google Drive and must be replaced when delivered.
     image: `/assets/smile-concept/Awaludin.jpg`,
     imageAlt: "drg. Awaludin Wibawa, Sp.BM",
+    imageOrigin: "center 12%",
     schedule: [
       { day: "(by appointment)", time: "" },
     ],
@@ -146,10 +147,9 @@ export const doctorDetails: Record<string, DoctorDetail> = {
     slug: "albar",
     name: "drg. Albar Abshar Muhamad, Sp.Pros",
     specialty: "Dokter gigi spesialis prostodonti",
-    // TODO(assets): reuses the listing photo; brief Final photo lives on
-    // Google Drive and must be replaced when delivered.
     image: `/assets/smile-concept/Albar.jpg`,
     imageAlt: "drg. Albar Abshar Muhamad, Sp.Pros",
+    imageOrigin: "center 2%",
     schedule: [
       { day: "(by appointment)", time: "" },
     ],
@@ -170,8 +170,6 @@ export const doctorDetails: Record<string, DoctorDetail> = {
     slug: "qaiszara",
     name: "drg. Qaiszara Puspadewi",
     specialty: "Dokter gigi umum",
-    // TODO(assets): reuses the listing photo; brief Final photo lives on
-    // Google Drive and must be replaced when delivered.
     image: `/assets/smile-concept/Qaiszara.jpg`,
     imageAlt: "drg. Qaiszara Puspadewi",
     schedule: [
@@ -194,8 +192,6 @@ export const doctorDetails: Record<string, DoctorDetail> = {
     slug: "kartika",
     name: "drg. Kartika Devy",
     specialty: "Dokter gigi umum",
-    // TODO(assets): reuses the listing photo; brief Final photo lives on
-    // Google Drive and must be replaced when delivered.
     image: `/assets/smile-concept/Kartika.jpg`,
     imageAlt: "drg. Kartika Devy",
     schedule: [
@@ -218,8 +214,6 @@ export const doctorDetails: Record<string, DoctorDetail> = {
     slug: "julia",
     name: "drg. Julia Dharmawan",
     specialty: "Dokter gigi umum",
-    // TODO(assets): reuses the listing photo; brief Final photo lives on
-    // Google Drive and must be replaced when delivered.
     image: `/assets/smile-concept/Julia.jpg`,
     imageAlt: "drg. Julia Dharmawan",
     schedule: [
@@ -243,10 +237,9 @@ export const doctorDetails: Record<string, DoctorDetail> = {
     slug: "kevin",
     name: "drg. Kevin Brianshah",
     specialty: "Dokter gigi umum",
-    // TODO(assets): reuses the listing photo; brief Final photo lives on
-    // Google Drive and must be replaced when delivered.
     image: `/assets/smile-concept/Kevin.jpg`,
     imageAlt: "drg. Kevin Brianshah",
+    imageOrigin: "center 8%",
     schedule: [
       { day: "Senin", time: "12.00 - 16.00 WIB" },
       { day: "Minggu", time: "14.00 - 17.00 WIB" },
@@ -267,10 +260,9 @@ export const doctorDetails: Record<string, DoctorDetail> = {
     slug: "benazir",
     name: "drg. Benazir Amriza Dini, Sp.Ort.",
     specialty: "Dokter gigi spesialis ortodonti",
-    // TODO(assets): reuses the listing photo; brief Final photo lives on
-    // Google Drive and must be replaced when delivered.
     image: `/assets/smile-concept/Benazir.jpg`,
     imageAlt: "drg. Benazir Amriza Dini, Sp.Ort.",
+    imageOrigin: "center 3%",
     schedule: [
       { day: "Selasa", time: "16.00 - 20.00 WIB" },
       { day: "Sabtu", time: "09.00 - 15.00 WIB" },

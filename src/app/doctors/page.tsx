@@ -62,7 +62,14 @@ function DoctorCard({
           alt={doctor.alt}
           fill
           sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 33vw"
-          className="object-cover object-top"
+          // Per-doctor framing from doctor-list.ts: real studio photos have
+          // wide framing + headroom, so each photo zooms and crops differently.
+          style={{
+            transform: `scale(${doctor.imageScale ?? "2.5"})`,
+            transformOrigin: "top",
+            objectPosition: doctor.imagePosition ?? "center 30%",
+          }}
+          className="object-cover"
         />
         <div
           aria-hidden="true"

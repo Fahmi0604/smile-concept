@@ -7,6 +7,10 @@ export type DoctorListItem = {
   specialty: string;
   image: string;
   alt: string;
+  /** object-position for the card photo (framing differs per photo). */
+  imagePosition?: string;
+  /** transform scale for the card photo. */
+  imageScale?: string;
   slug?: string;
 };
 
@@ -16,6 +20,7 @@ export const doctorList: DoctorListItem[] = [
     specialty: "Dokter gigi spesialis konservasi gigi",
     image: "/assets/smile-concept/Kalya.jpg",
     alt: "drg. Kalya Putri, Sp.KG",
+    imagePosition: "center 30%",
     slug: "kalya",
   },
   {
@@ -23,6 +28,7 @@ export const doctorList: DoctorListItem[] = [
     specialty: "Dokter gigi spesialis ortodonti",
     image: "/assets/smile-concept/Lidya.jpg",
     alt: "drg. Lidya Wati Budhy, Sp.Ort",
+    imagePosition: "center 26%",
     slug: "lidya",
   },
   {
@@ -30,6 +36,7 @@ export const doctorList: DoctorListItem[] = [
     specialty: "Dokter gigi spesialis konservasi gigi",
     image: "/assets/smile-concept/Grestyasanti.jpg",
     alt: "drg. Grestyasanti Wimasan, Sp.KG",
+    imagePosition: "center 30%",
     slug: "grestyasanti",
   },
   {
@@ -37,6 +44,7 @@ export const doctorList: DoctorListItem[] = [
     specialty: "Dokter gigi spesialis periodonsia",
     image: "/assets/smile-concept/Ines.jpg",
     alt: "drg. Ines Augustina S, Sp.Perio",
+    imagePosition: "center 33%",
     slug: "ines",
   },
   {
@@ -44,6 +52,7 @@ export const doctorList: DoctorListItem[] = [
     specialty: "Dokter gigi spesialis bedah mulut",
     image: "/assets/smile-concept/Awaludin.jpg",
     alt: "drg. Awaludin Wibawa, Sp.BM",
+    imagePosition: "center 25%",
     slug: "awaludin",
   },
   {
@@ -51,6 +60,7 @@ export const doctorList: DoctorListItem[] = [
     specialty: "Dokter gigi spesialis prostodonti",
     image: "/assets/smile-concept/Albar.jpg",
     alt: "drg. Albar Abshar Muhamad, Sp.Pros",
+    imagePosition: "center 14%",
     slug: "albar",
   },
   {
@@ -58,6 +68,7 @@ export const doctorList: DoctorListItem[] = [
     specialty: "Dokter gigi umum",
     image: "/assets/smile-concept/Qaiszara.jpg",
     alt: "drg. Qaiszara Puspadewi",
+    imagePosition: "center 30%",
     slug: "qaiszara",
   },
   {
@@ -65,6 +76,7 @@ export const doctorList: DoctorListItem[] = [
     specialty: "Dokter gigi umum",
     image: "/assets/smile-concept/Kartika.jpg",
     alt: "drg. Kartika Devy",
+    imagePosition: "center 25%",
     slug: "kartika",
   },
   {
@@ -72,6 +84,7 @@ export const doctorList: DoctorListItem[] = [
     specialty: "Dokter gigi umum",
     image: "/assets/smile-concept/Julia.jpg",
     alt: "drg. Julia Dharmawan",
+    imagePosition: "center 25%",
     slug: "julia",
   },
   {
@@ -79,6 +92,7 @@ export const doctorList: DoctorListItem[] = [
     specialty: "Dokter gigi umum",
     image: "/assets/smile-concept/Kevin.jpg",
     alt: "drg. Kevin Brianshah",
+    imagePosition: "center 21%",
     slug: "kevin",
   },
   {
@@ -86,6 +100,7 @@ export const doctorList: DoctorListItem[] = [
     specialty: "Dokter gigi spesialis ortodonti",
     image: "/assets/smile-concept/Benazir.jpg",
     alt: "drg. Benazir Amriza Dini, Sp.Ort.",
+    imagePosition: "center 16%",
     slug: "benazir",
   },
 ];
