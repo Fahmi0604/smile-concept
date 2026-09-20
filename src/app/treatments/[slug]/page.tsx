@@ -105,35 +105,37 @@ export default async function TreatmentDetailPage({
         </div>
       </section>
 
-      <section
-        aria-labelledby="td-results-title"
-        className="bg-emphasize pt-20 pb-24 max-md:pt-14 max-md:pb-[72px]"
-      >
-        <Shell as="div">
-          <h2 id="td-results-title" className="h3-subheadline text-ink mb-10">
-            Proven Results
-          </h2>
-          <div className="grid grid-cols-3 gap-6 max-md:grid-cols-1 max-md:gap-5">
-            {treatment.results.map((result, i) => (
-              <article key={i}>
-                <div className="mb-3.5 overflow-hidden rounded-2xl">
-                  <Image
-                    src={result.image}
-                    alt={result.alt}
-                    width={800}
-                    height={1000}
-                    sizes="(max-width: 767px) 100vw, 30vw"
-                    className="block w-full"
-                  />
-                </div>
-                <p className="font-body text-[18px] leading-[1.4] text-ink">
-                  {result.label}
-                </p>
-              </article>
-            ))}
-          </div>
-        </Shell>
-      </section>
+      {treatment.results.length > 0 && (
+        <section
+          aria-labelledby="td-results-title"
+          className="bg-emphasize pt-20 pb-24 max-md:pt-14 max-md:pb-[72px]"
+        >
+          <Shell as="div">
+            <h2 id="td-results-title" className="h3-subheadline text-ink mb-10">
+              Proven Results
+            </h2>
+            <div className="grid grid-cols-3 gap-6 max-md:grid-cols-1 max-md:gap-5">
+              {treatment.results.map((result, i) => (
+                <article key={i}>
+                  <div className="mb-3.5 overflow-hidden rounded-2xl">
+                    <Image
+                      src={result.image}
+                      alt={result.alt}
+                      width={774}
+                      height={806}
+                      sizes="(max-width: 767px) 100vw, 30vw"
+                      className="block w-full"
+                    />
+                  </div>
+                  <p className="font-body text-[18px] leading-[1.4] text-ink">
+                    {result.label}
+                  </p>
+                </article>
+              ))}
+            </div>
+          </Shell>
+        </section>
+      )}
     </>
   );
 }

@@ -24,8 +24,8 @@ export const API_BASE_URL =
   process.env.NEXT_PUBLIC_CMS_API_URL?.replace(/\/+$/, "") ??
   "https://cms.tumbuhsehat.id/api";
 
-const REVALIDATE_SETTINGS = 43200; // 12 hours
-const REVALIDATE_CONTENT = 3600; // 1 hour
+const REVALIDATE_SETTINGS = process.env.NODE_ENV === "development" ? 60 : 43200; // prod: 12 hours
+const REVALIDATE_CONTENT = process.env.NODE_ENV === "development" ? 60 : 3600; // prod: 1 hour
 
 /** WhatsApp number used when the CMS has none configured. */
 const FALLBACK_WHATSAPP = "6281286632240";
