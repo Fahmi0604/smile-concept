@@ -140,25 +140,27 @@
     outline: 2px solid var(--color-ink);
     outline-offset: 4px;
   }
-}
 
-/* Mobile (≤767px) overrides per prototype */
-@media (max-width: 767px) {
-  .h1-display {
-    font-size: clamp(48px, 13vw, 68px);
-  }
-  .h2 {
-    font-size: 40px;
-    line-height: 1.15;
-    letter-spacing: -0.01em;
-  }
-  .h3-subheadline {
-    font-size: 26px;
-    line-height: 1.25;
-  }
-  .caption {
-    font-size: 16px;
-    line-height: 1.5;
+  /* Mobile (≤767px) overrides per prototype — kept INSIDE the components
+     layer so utilities (e.g. the hero's clamp font-size) can still win;
+     unlayered CSS would beat every Tailwind utility in the cascade. */
+  @media (max-width: 767px) {
+    .h1-display {
+      font-size: clamp(48px, 13vw, 68px);
+    }
+    .h2 {
+      font-size: 40px;
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+    }
+    .h3-subheadline {
+      font-size: 26px;
+      line-height: 1.25;
+    }
+    .caption {
+      font-size: 16px;
+      line-height: 1.5;
+    }
   }
 }
 

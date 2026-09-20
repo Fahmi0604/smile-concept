@@ -275,8 +275,8 @@ export const doctorDetails: Record<string, DoctorDetail> = {
     specialty: "Dokter gigi spesialis ortodonti",
     image: `/assets/smile-concept/Benazir.jpg`,
     imageAlt: `drg. Benazir Amriza Dini, Sp.Ort.`,
-    imageScale: "1",
-    imageOrigin: "0% center",
+    imageScale: "1.08",
+    imageOrigin: "0% 0%",
     schedule: [
       { day: "Selasa", time: "16.00 - 20.00 WIB" },
       { day: "Sabtu", time: "09.00 - 15.00 WIB" },
