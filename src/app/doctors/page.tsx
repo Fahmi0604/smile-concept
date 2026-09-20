@@ -53,6 +53,12 @@ function DoctorCard({
 }) {
   const isInternal = Boolean(doctor.slug);
   const href = doctor.slug ? `/doctors/${doctor.slug}` : bookHref;
+  // Per-doctor framing from doctor-list.ts: real studio photos have wide
+  // framing + headroom, so each photo zooms and crops differently.
+  // imagePosition = "X Y": Y feeds object-position (vertical crop), X becomes
+  // transform-origin X (horizontal crop — there is no horizontal object-fit
+  // overflow, so object-position X alone would be a no-op).
+  const [posX, posY] = (doctor.imagePosition ?? "center 30%").split(" ");
 
   return (
     <article className="relative flex flex-col overflow-hidden rounded-[20px] bg-emphasize">
@@ -62,12 +68,10 @@ function DoctorCard({
           alt={doctor.alt}
           fill
           sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 33vw"
-          // Per-doctor framing from doctor-list.ts: real studio photos have
-          // wide framing + headroom, so each photo zooms and crops differently.
           style={{
             transform: `scale(${doctor.imageScale ?? "2.5"})`,
-            transformOrigin: "top",
-            objectPosition: doctor.imagePosition ?? "center 30%",
+            transformOrigin: `${posX} top`,
+            objectPosition: `${posX} ${posY}`,
           }}
           className="object-cover"
         />

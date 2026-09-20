@@ -20,7 +20,8 @@ export const doctorList: DoctorListItem[] = [
     specialty: "Dokter gigi spesialis konservasi gigi",
     image: "/assets/smile-concept/Kalya.jpg",
     alt: "drg. Kalya Putri, Sp.KG",
-    imagePosition: "center 30%",
+    imagePosition: "30% 30%",
+    imageScale: "2",
     slug: "kalya",
   },
   {
