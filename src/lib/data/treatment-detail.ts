@@ -1,8 +1,7 @@
 // Smile Concept treatment detail content, keyed by slug.
 // Photos: heroes + before/after wired from the client's delivered assets
-// (TD_* files). pit-and-fissure-sealant still uses Placeholder.png until
-// its photo arrives. Treatments with no before/after photos render
-// without the Proven Results section.
+// (TD_* files) — all 23 treatments now have real heroes. Treatments with no
+// before/after photos render without the Proven Results section.
 
 export type TreatmentResult = {
   image: string;
@@ -305,9 +304,7 @@ export const treatmentDetails: Record<string, TreatmentDetail> = {
     title: "Pit and Fissure Sealant",
     description: "Perawatan pelindung pada permukaan gigi geraham anak untuk membantu mencegah penumpukan sisa makanan dan risiko gigi berlubang.",
     tags: [],
-    // TODO(assets): brief Final hero is an external reference URL, not a
-    // licensed asset. Swap when the client delivers the real photo.
-    heroImage: "/assets/smile-concept/Placeholder.png",
+    heroImage: "/assets/smile-concept/TD_pit-and-fissure-sealant_hero.jpeg",
     heroImageAlt: "Pit and Fissure Sealant",
     ctaLabel: "Jadwalkan konsultasi",
     results: [],
