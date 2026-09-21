@@ -1,3 +1,14 @@
+export class FetchError extends Error {
+  constructor(
+    message: string,
+    readonly status: number,
+    readonly url: string,
+  ) {
+    super(message);
+    this.name = "FetchError";
+  }
+}
+
 export async function fetcher<T>(
   url: string,
   options?: RequestInit & { timeout?: number }
@@ -16,17 +27,24 @@ export async function fetcher<T>(
     clearTimeout(timeoutId);
 
     if (!res.ok) {
-      if (res.status === 404) {
-        throw new Error('NOT_FOUND');
-      } else {
-        console.error(`Error fetching ${url}:`, res.statusText);
-        throw new Error(`NOT_FOUND`);
-      }
+      // Keep the real status on the error — the CMS throttles at 5 req/min and
+      // used to surface those 429s as a bare `NOT_FOUND`, which made a rate
+      // limit indistinguishable from a missing record in the logs.
+      console.error(
+        `CMS ${res.status} ${res.statusText} for ${url}` +
+          ` (x-ratelimit-remaining: ${res.headers.get("x-ratelimit-remaining") ?? "n/a"})`,
+      );
+
+      // Only a genuine 404 means "no such record"; anything else is an outage.
+      throw new FetchError(res.status === 404 ? "NOT_FOUND" : "CMS_ERROR", res.status, url);
     }
 
     return res.json();
   } catch (error) {
     clearTimeout(timeoutId);
+    if (error instanceof Error && error.name === "AbortError") {
+      console.error(`CMS timeout after ${timeout}ms for ${url}`);
+    }
     throw error;
   }
 }

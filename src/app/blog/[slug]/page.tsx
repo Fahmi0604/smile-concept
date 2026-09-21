@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { format } from "date-fns";
 import { id as idLocale } from "date-fns/locale";
 import { getPostBySlug, getSettings } from "@/lib/api";
@@ -60,8 +60,14 @@ export default async function BlogArticlePage({
   try {
     blog = await getPostBySlug(slug);
   } catch (error: unknown) {
+    // Only a real 404 means the article does not exist.
     if (error instanceof Error && error.message === "NOT_FOUND") notFound();
-    throw error;
+
+    // Anything else is a CMS outage — most likely the 5 req/min throttle
+    // answering 429. Sending the visitor to /blog (which falls back safely)
+    // beats a crash page, and avoids caching a bogus 404 for this slug.
+    console.error(`Blog article "${slug}" unavailable, redirecting to /blog:`, error);
+    redirect("/blog");
   }
   if (!blog) notFound();
 

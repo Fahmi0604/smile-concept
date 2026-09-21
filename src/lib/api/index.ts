@@ -167,10 +167,14 @@ export function toPromoView(promo: CmsPromo): Promo {
 }
 
 /**
- * Promo list. Falls back to the static promos from the prototype when the CMS is
- * unreachable OR has no promos published — the promo page would otherwise be a
- * blank grid, and as of now the CMS genuinely returns an empty list.
- * Inactive promos (`is_active: false`) are filtered out.
+ * Promo list. Inactive promos (`is_active: false`) are filtered out.
+ *
+ * An unreachable CMS returns an empty list, not the static promos: showing
+ * prototype data during an outage hid the outage — the site looked healthy
+ * while every CMS call was failing. Both consumers render an empty state.
+ *
+ * A reachable CMS with nothing published still falls back to the static
+ * promos (see below).
  */
 export async function getPromos(): Promise<CmsResponse<Promo[]>> {
   try {
@@ -193,7 +197,7 @@ export async function getPromos(): Promise<CmsResponse<Promo[]>> {
     return { ...res, data: active.map(toPromoView) };
   } catch (error) {
     console.error("Failed to fetch promos:", error);
-    return { success: true, message: "Fallback promos", data: fallbackPromos };
+    return emptyList<Promo>("Promos unavailable");
   }
 }
 
