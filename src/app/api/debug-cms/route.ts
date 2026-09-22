@@ -45,15 +45,18 @@ async function probe(path: string) {
       // undici hides the real reason (DNS, TLS, ECONNREFUSED) in `cause`.
       cause:
         error instanceof Error && error.cause instanceof Error
-          ? `${error.cause.name}: ${error.cause.message}${
-              "code" in error.cause ? ` (${(error.cause as { code?: string }).code})` : ""
-            }`
+          ? `${error.cause.name}: ${error.cause.message}${"code" in error.cause ? ` (${(error.cause as { code?: string }).code})` : ""
+          }`
           : null,
     };
   }
 }
 
 export async function GET() {
+  if (process.env.NODE_ENV === "production") {
+    return new Response("Not Found", { status: 404 });
+  }
+
   const results = await Promise.all(ENDPOINTS.map(probe));
 
   // Client IP as the CMS sees it — this is the IP the 5 req/min throttle counts.
