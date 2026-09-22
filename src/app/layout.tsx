@@ -2,6 +2,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { getSettings } from "@/lib/api";
+import { Analytics } from "@vercel/analytics/next"
 
 export default async function RootLayout({
   children,
@@ -25,6 +26,7 @@ export default async function RootLayout({
         <Navbar settings={settings.data} />
         <main className="min-h-screen">{children}</main>
         <Footer settings={settings.data} />
+        <Analytics />
       </body>
     </html>
   );
