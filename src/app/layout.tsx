@@ -12,7 +12,7 @@ export default async function RootLayout({
   const settings = await getSettings();
 
   return (
-    <html lang="en">
+    <html lang="id">
       <head>
         {/* Smile Concept fonts (matches prototype) */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
