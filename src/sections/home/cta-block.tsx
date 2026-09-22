@@ -15,7 +15,7 @@ export default function CtaBlock({ settings }: { settings: Setting }) {
     >
       <div aria-hidden="true" className="absolute inset-0 -z-[2]">
         <Image
-          src="/assets/smile-concept/Background_CTA.png"
+          src="/assets/smile-concept/Background_CTA.webp"
           alt=""
           fill
           sizes="100vw"

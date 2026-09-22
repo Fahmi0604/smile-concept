@@ -65,7 +65,7 @@ export default function Doctors() {
 
         <div className="order-2 md:order-3 relative">
           <Image
-            src="/assets/smile-concept/Doctors.png"
+            src="/assets/smile-concept/Doctors.webp"
             alt="The Smile Concept team of doctors"
             width={1440}
             height={720}

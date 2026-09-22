@@ -54,7 +54,7 @@ export default async function Footer({ settings }: { settings: Setting }) {
       <Shell as="div" className="flex flex-col">
         <div className="mb-12">
           <Image
-            src="/assets/smile-concept/Logo3.png"
+            src="/assets/smile-concept/Logo3.webp"
             alt="Smile Concept Dental Clinic"
             width={224}
             height={56}

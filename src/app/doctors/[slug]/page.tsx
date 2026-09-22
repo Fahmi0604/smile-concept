@@ -24,7 +24,7 @@ export async function generateMetadata({
     return metaData({
       title: "Our Doctors — Smile Concept Dental Clinic",
       description: "Meet the caring doctors at Smile Concept Dental Clinic.",
-      images: [{ url: "/assets/smile-concept/Kalya.jpg" }],
+      images: [{ url: "/assets/smile-concept/Kalya.webp" }],
       path: "/doctors",
     });
   }

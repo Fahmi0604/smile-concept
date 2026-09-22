@@ -32,17 +32,17 @@ export const treatmentDetails: Record<string, TreatmentDetail> = {
     ctaLabel: "Jadwalkan konsultasi",
     results: [
       {
-        image: "/assets/smile-concept/TD_braces_ba1.png",
+        image: "/assets/smile-concept/TD_braces_ba1.webp",
         alt: "4-month Damon Braces Progress",
         label: "4-month Damon Braces Progress",
       },
       {
-        image: "/assets/smile-concept/TD_braces_ba2.png",
+        image: "/assets/smile-concept/TD_braces_ba2.webp",
         alt: "7-month Metal Braces Progress",
         label: "7-month Metal Braces Progress",
       },
       {
-        image: "/assets/smile-concept/TD_braces_ba3.png",
+        image: "/assets/smile-concept/TD_braces_ba3.webp",
         alt: "13-month Damon Braces Progress",
         label: "13-month Damon Braces Progress",
       },
@@ -59,17 +59,17 @@ export const treatmentDetails: Record<string, TreatmentDetail> = {
     ctaLabel: "Jadwalkan konsultasi",
     results: [
       {
-        image: "/assets/smile-concept/TD_dental-spa_ba1.png",
+        image: "/assets/smile-concept/TD_dental-spa_ba1.webp",
         alt: "Focused deep cleaning to protect your upper teeth and gums.",
         label: "Focused deep cleaning to protect your upper teeth and gums.",
       },
       {
-        image: "/assets/smile-concept/TD_dental-spa_ba2.png",
+        image: "/assets/smile-concept/TD_dental-spa_ba2.webp",
         alt: "Focused deep cleaning to protect your lower teeth and gums.",
         label: "Focused deep cleaning to protect your lower teeth and gums.",
       },
       {
-        image: "/assets/smile-concept/TD_dental-spa_ba3.png",
+        image: "/assets/smile-concept/TD_dental-spa_ba3.webp",
         alt: "Focused deep cleaning to protect your lower teeth and gums.",
         label: "Focused deep cleaning to protect your lower teeth and gums.",
       },
@@ -95,17 +95,17 @@ export const treatmentDetails: Record<string, TreatmentDetail> = {
     ctaLabel: "Jadwalkan konsultasi",
     results: [
       {
-        image: "/assets/smile-concept/TD_bleaching_ba1.png",
+        image: "/assets/smile-concept/TD_bleaching_ba1.webp",
         alt: "Effortlessly erase stains.",
         label: "Effortlessly erase stains.",
       },
       {
-        image: "/assets/smile-concept/TD_bleaching_ba2.png",
+        image: "/assets/smile-concept/TD_bleaching_ba2.webp",
         alt: "Professional whitening for a radiant smile.",
         label: "Professional whitening for a radiant smile.",
       },
       {
-        image: "/assets/smile-concept/TD_bleaching_ba3.png",
+        image: "/assets/smile-concept/TD_bleaching_ba3.webp",
         alt: "Lift deep stains safely for a naturally brilliant smile.",
         label: "Lift deep stains safely for a naturally brilliant smile.",
       },
@@ -116,22 +116,22 @@ export const treatmentDetails: Record<string, TreatmentDetail> = {
     title: "Veneer dan Crown",
     description: "Perawatan veneer dan crown untuk memperbaiki bentuk, warna, atau struktur gigi, dengan hasil yang dirancang agar terlihat natural dan harmonis dengan senyum pasien.",
     tags: [],
-    heroImage: "/assets/smile-concept/TD_veneer-dan-crown_hero.png",
+    heroImage: "/assets/smile-concept/TD_veneer-dan-crown_hero.webp",
     heroImageAlt: "Veneer dan Crown",
     ctaLabel: "Jadwalkan konsultasi",
     results: [
       {
-        image: "/assets/smile-concept/TD_veneer-dan-crown_ba1.png",
+        image: "/assets/smile-concept/TD_veneer-dan-crown_ba1.webp",
         alt: "Restore and protect damaged teeth with a natural look.",
         label: "Restore and protect damaged teeth with a natural look.",
       },
       {
-        image: "/assets/smile-concept/TD_veneer-dan-crown_ba2.png",
+        image: "/assets/smile-concept/TD_veneer-dan-crown_ba2.webp",
         alt: "Custom-made crown for a flawless, natural-looking tooth.",
         label: "Custom-made crown for a flawless, natural-looking tooth.",
       },
       {
-        image: "/assets/smile-concept/TD_veneer-dan-crown_ba3.png",
+        image: "/assets/smile-concept/TD_veneer-dan-crown_ba3.webp",
         alt: "Strong, durable protection for a compromised tooth.",
         label: "Strong, durable protection for a compromised tooth.",
       },
@@ -142,7 +142,7 @@ export const treatmentDetails: Record<string, TreatmentDetail> = {
     title: "Gingivectomy",
     description: "Perawatan gusi estetik untuk membantu membentuk garis gusi agar terlihat lebih proporsional dan menciptakan tampilan senyum yang lebih seimbang.",
     tags: [],
-    heroImage: "/assets/smile-concept/TD_gingivectomy_hero.jpg",
+    heroImage: "/assets/smile-concept/TD_gingivectomy_hero.webp",
     heroImageAlt: "Gingivectomy",
     ctaLabel: "Jadwalkan konsultasi",
     results: [],
@@ -152,7 +152,7 @@ export const treatmentDetails: Record<string, TreatmentDetail> = {
     title: "Gum Depigmentation",
     description: "Perawatan untuk membantu mencerahkan tampilan gusi yang gelap atau tidak merata, sehingga area senyum terlihat lebih cerah dan estetik.",
     tags: [],
-    heroImage: "/assets/smile-concept/TD_gum-depigmentation_hero.jpg",
+    heroImage: "/assets/smile-concept/TD_gum-depigmentation_hero.webp",
     heroImageAlt: "Gum Depigmentation",
     ctaLabel: "Jadwalkan konsultasi",
     results: [],
@@ -167,7 +167,7 @@ export const treatmentDetails: Record<string, TreatmentDetail> = {
     ctaLabel: "Jadwalkan konsultasi",
     results: [
       {
-        image: "/assets/smile-concept/TD_smile-makeover_ba1.png",
+        image: "/assets/smile-concept/TD_smile-makeover_ba1.webp",
         alt: "Smile makeover for your personalized smile.",
         label: "Smile makeover for your personalized smile.",
       },
@@ -223,17 +223,17 @@ export const treatmentDetails: Record<string, TreatmentDetail> = {
     ctaLabel: "Jadwalkan konsultasi",
     results: [
       {
-        image: "/assets/smile-concept/TD_aesthetic-filling_ba1.png",
+        image: "/assets/smile-concept/TD_aesthetic-filling_ba1.webp",
         alt: "Front Tooth Aesthetic Filling",
         label: "Front Tooth Aesthetic Filling",
       },
       {
-        image: "/assets/smile-concept/TD_aesthetic-filling_ba2.png",
+        image: "/assets/smile-concept/TD_aesthetic-filling_ba2.webp",
         alt: "Natural Front Tooth Restoration",
         label: "Natural Front Tooth Restoration",
       },
       {
-        image: "/assets/smile-concept/TD_aesthetic-filling_ba3.png",
+        image: "/assets/smile-concept/TD_aesthetic-filling_ba3.webp",
         alt: "Posterior Aesthetic Restoration",
         label: "Posterior Aesthetic Restoration",
       },
@@ -264,7 +264,7 @@ export const treatmentDetails: Record<string, TreatmentDetail> = {
     title: "Odontectomy",
     description: "Tindakan operasi pencabutan gigi geraham bungsu untuk membantu mengatasi posisi gigi yang tumbuh miring, sulit tumbuh, atau menimbulkan rasa tidak nyaman.",
     tags: [],
-    heroImage: "/assets/smile-concept/TD_odontectomy_hero.jpg",
+    heroImage: "/assets/smile-concept/TD_odontectomy_hero.webp",
     heroImageAlt: "Odontectomy",
     ctaLabel: "Jadwalkan konsultasi",
     results: [],
@@ -334,7 +334,7 @@ export const treatmentDetails: Record<string, TreatmentDetail> = {
     title: "Kids Braces",
     description: "Perawatan kawat gigi anak untuk membantu mengarahkan pertumbuhan rahang dan susunan gigi sejak dini agar berkembang lebih optimal.",
     tags: [],
-    heroImage: "/assets/smile-concept/TD_kids-braces_hero.jpg",
+    heroImage: "/assets/smile-concept/TD_kids-braces_hero.webp",
     heroImageAlt: "Kids Braces",
     ctaLabel: "Jadwalkan konsultasi",
     results: [],

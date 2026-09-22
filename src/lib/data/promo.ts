@@ -3,7 +3,7 @@
 // The three `featured` promos are the ones the prototype shows on the home
 // section; /promo renders the full list in page order.
 
-const IMG = (n: number) => `/assets/smile-concept/3_promo${n}.jpg`;
+const IMG = (n: number) => `/assets/smile-concept/3_promo${n}.webp`;
 
 export const promos: Promo[] = [
   {

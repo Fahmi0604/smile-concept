@@ -11,7 +11,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: "Blog — Smile Concept Dental Clinic",
     description:
       "Tips, insights, and stories about dental health from the Smile Concept team.",
-    images: [{ url: "/assets/smile-concept/Braces.png" }],
+    images: [{ url: "/assets/smile-concept/Braces.webp" }],
     path: "/blog",
   });
 }

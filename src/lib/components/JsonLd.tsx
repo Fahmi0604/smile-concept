@@ -36,7 +36,7 @@ export function blogPostingJsonLd(data: Partial<Post>): object {
       name: "Smile Concept",
       logo: {
         "@type": "ImageObject",
-        url: `${SITE_URL}/assets/smile-concept/Logo1.png`,
+        url: `${SITE_URL}/assets/smile-concept/Logo1.webp`,
       },
     },
   };
@@ -52,7 +52,7 @@ export function dentistJsonLd(settings?: Setting): object {
     name: "Smile Concept",
     url: SITE_URL,
     telephone: settings?.phone ?? "+62 811 157 7137",
-    image: `${SITE_URL}/assets/smile-concept/Logo1.png`,
+    image: `${SITE_URL}/assets/smile-concept/Logo1.webp`,
     address: {
       "@type": "PostalAddress",
       streetAddress: settings?.address?.street ?? "Jl. Benda Raya No.5",

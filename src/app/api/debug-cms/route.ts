@@ -8,7 +8,7 @@ export const dynamic = "force-dynamic";
 
 const BASE =
   process.env.NEXT_PUBLIC_CMS_API_URL?.replace(/\/+$/, "") ??
-  "https://cms.tumbuhsehat.id/api";
+  "https://cms.smileconceptclinic.com/api";
 
 const ENDPOINTS = ["/settings", "/promos", "/posts"];
 

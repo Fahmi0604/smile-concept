@@ -22,7 +22,7 @@ type Slide = {
 const SLIDES: Slide[] = [
   {
     id: "facility-1",
-    src: "/assets/smile-concept/0_Home_facility1.jpg",
+    src: "/assets/smile-concept/0_Home_facility1.webp",
     alt: "Air polishing and scaling unit",
     caption:
       "A painless scaling experience designed to keep your teeth clean and your treatment comfortable.",
@@ -30,34 +30,34 @@ const SLIDES: Slide[] = [
   },
   {
     id: "facility-2",
-    src: "/assets/smile-concept/0_Home_facility2.jpg",
+    src: "/assets/smile-concept/0_Home_facility2.webp",
     alt: "Clinician documenting treatment with a DSLR camera",
     caption: "DSLR Camera for accurate documentation and treatment planning.",
     position: "center 42%",
   },
   {
     id: "facility-3",
-    src: "/assets/smile-concept/0_Home_facility3.jpg",
+    src: "/assets/smile-concept/0_Home_facility3.webp",
     alt: "Smile Concept reception and waiting area",
     caption: "A welcoming space designed for comfort while you wait.",
   },
   {
     id: "facility-4",
-    src: "/assets/smile-concept/0_Home_facility4.jpg",
+    src: "/assets/smile-concept/0_Home_facility4.webp",
     alt: "Dentist using an intraoral camera during examination",
     caption:
       "An intraoral camera provides a closer look at your oral condition for a more precise examination.",
   },
   {
     id: "facility-5",
-    src: "/assets/smile-concept/0_Home_facility5.jpg",
+    src: "/assets/smile-concept/0_Home_facility5.webp",
     alt: "Spacious treatment room with a dedicated dental unit",
     caption:
       "Spacious treatment rooms equipped with dedicated dental units for a more private and comfortable dental visit.",
   },
   {
     id: "facility-6",
-    src: "/assets/smile-concept/0_Home_facility6.jpg",
+    src: "/assets/smile-concept/0_Home_facility6.webp",
     alt: "Treatment room with dedicated dental units",
     caption:
       "Two dedicated dental units designed to provide a comfortable and efficient treatment experience.",

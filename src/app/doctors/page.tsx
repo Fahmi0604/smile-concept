@@ -12,7 +12,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: "Our Doctors — Smile Concept Dental Clinic",
     description:
       "Meet the caring doctors at Smile Concept Dental Clinic — experienced, patient-focused, and dedicated to your best smile.",
-    images: [{ url: "/assets/smile-concept/Kalya.jpg" }],
+    images: [{ url: "/assets/smile-concept/Kalya.webp" }],
     path: "/doctors",
   });
 }

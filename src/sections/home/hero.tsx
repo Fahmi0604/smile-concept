@@ -12,7 +12,7 @@ export default function HomeHero({ settings }: { settings: Setting }) {
     >
       <div className="absolute inset-0 -z-[3]" aria-hidden="true">
         <Image
-          src="/assets/smile-concept/hero-bg.png"
+          src="/assets/smile-concept/hero-bg.webp"
           alt=""
           fill
           priority
@@ -41,7 +41,7 @@ export default function HomeHero({ settings }: { settings: Setting }) {
 
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
-        src="/assets/smile-concept/woman-hero.png"
+        src="/assets/smile-concept/woman-hero.webp"
         alt="Smiling young woman holding a phone and a coffee cup"
         className="pointer-events-none absolute right-16 top-[87px] hidden h-[124%] w-auto select-none lg:block"
       />
@@ -84,7 +84,7 @@ export default function HomeHero({ settings }: { settings: Setting }) {
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/assets/smile-concept/woman-hero.png"
+            src="/assets/smile-concept/woman-hero.webp"
             alt=""
             className="mx-auto block h-full w-3/5 object-cover object-[center_top]"
           />

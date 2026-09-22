@@ -18,7 +18,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return metaData({
     title: 'Smile Concept — Personalized care for your better smile',
     description: "Trusted dental clinic in the heart of Kemang. Friendly, caring and personalized treatments — braces, clear aligners, veneers, whitening, and more.",
-    images: [{ url: '/assets/smile-concept/hero-bg.png' }],
+    images: [{ url: '/assets/smile-concept/hero-bg.webp' }],
     path: '/',
   });
 }

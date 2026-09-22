@@ -36,7 +36,7 @@ export default function Navbar({ settings }: { settings: Setting }) {
       >
         <Link href="/" aria-label="Smile Concept — home" className="inline-flex shrink-0 items-center">
           <Image
-            src="/assets/smile-concept/Logo1.png"
+            src="/assets/smile-concept/Logo1.webp"
             alt="Smile Concept Dental Clinic"
             width={160}
             height={40}
@@ -126,7 +126,7 @@ export default function Navbar({ settings }: { settings: Setting }) {
                 >
                   {link.icon && (
                     <Image
-                      src="/assets/smile-concept/Discount.png"
+                      src="/assets/smile-concept/Discount.webp"
                       alt=""
                       width={20}
                       height={20}
@@ -178,7 +178,7 @@ function NavLink({
     >
       {icon && (
         <Image
-          src="/assets/smile-concept/Discount.png"
+          src="/assets/smile-concept/Discount.webp"
           alt=""
           width={20}
           height={20}

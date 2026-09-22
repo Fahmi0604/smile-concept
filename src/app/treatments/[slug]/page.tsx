@@ -24,7 +24,7 @@ export async function generateMetadata({
       title: "Treatments — Smile Concept Dental Clinic",
       description:
         "Smile Concept offers a comprehensive range of dental treatments to achieve your best smile and maintain it.",
-      images: [{ url: "/assets/smile-concept/ModelTreatment1.png" }],
+      images: [{ url: "/assets/smile-concept/ModelTreatment1.webp" }],
       path: "/treatments",
     });
   }

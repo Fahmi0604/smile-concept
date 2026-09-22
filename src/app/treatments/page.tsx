@@ -11,7 +11,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: "Treatments — Smile Concept Dental Clinic",
     description:
       "Smile Concept menghadirkan perawatan gigi menyeluruh dengan pendekatan yang personal, nyaman, dan dirancang sesuai kebutuhanmu.",
-    images: [{ url: "/assets/smile-concept/ModelTreatment1.png" }],
+    images: [{ url: "/assets/smile-concept/ModelTreatment1.webp" }],
     path: "/treatments",
   });
 }
@@ -37,7 +37,7 @@ const CATEGORIES: Category[] = [
   {
     id: "tx-cat-1",
     title: "For Your Perfect Smile Without Drama",
-    image: "/assets/smile-concept/0_Home_Treatment1.jpg",
+    image: "/assets/smile-concept/0_Home_Treatment1.webp",
     imagePosition: "68% center",
     items: [
       {
@@ -73,7 +73,7 @@ const CATEGORIES: Category[] = [
   {
     id: "tx-cat-2",
     title: "Restore Your Smile & Rise",
-    image: "/assets/smile-concept/0_Home_Treatment2.jpg",
+    image: "/assets/smile-concept/0_Home_Treatment2.webp",
     imageRight: true,
     items: [
       {
@@ -101,7 +101,7 @@ const CATEGORIES: Category[] = [
   {
     id: "tx-cat-3",
     title: "No More Pain All the Gain",
-    image: "/assets/smile-concept/0_Home_Treatment3.jpg",
+    image: "/assets/smile-concept/0_Home_Treatment3.webp",
     imagePosition: "55% center",
     items: [
       {
@@ -134,7 +134,7 @@ const CATEGORIES: Category[] = [
   {
     id: "tx-cat-4",
     title: "Helping Your Kids Raise Confident Smile",
-    image: "/assets/smile-concept/0_Home_Treatment4.jpg",
+    image: "/assets/smile-concept/0_Home_Treatment4.webp",
     imageRight: true,
     items: [
       {

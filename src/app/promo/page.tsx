@@ -9,7 +9,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: "Promo — Smile Concept Dental Clinic",
     description:
       "Special promos at Smile Concept Dental Clinic — deals on braces, bleaching, implants, veneers, and more.",
-    images: [{ url: "/assets/smile-concept/promo-card-img1.png" }],
+    images: [{ url: "/assets/smile-concept/promo-card-img1.webp" }],
     path: "/promo",
   });
 }

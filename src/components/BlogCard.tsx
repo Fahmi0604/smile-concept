@@ -11,7 +11,7 @@ function formatDate(value: string | null): string {
   }
 }
 
-const PLACEHOLDER = "/assets/smile-concept/Placeholder.png";
+const PLACEHOLDER = "/assets/smile-concept/Placeholder.webp";
 
 export function BlogCard({ post }: { post: Post }) {
   const date = formatDate(post.published_at);

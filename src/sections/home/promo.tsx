@@ -4,22 +4,22 @@ import { PromoCard } from "@/components/PromoCard";
 
 const INSURANCE_LOGOS = [
   { src: "/assets/smile-concept/0_Home_Insurance1.webp", alt: "Allianz Partners" },
-  { src: "/assets/smile-concept/0_Home_Insurance2.png", alt: "FPG Insurance" },
-  { src: "/assets/smile-concept/0_Home_Insurance3.png", alt: "Pacific Cross Health Insurance" },
-  { src: "/assets/smile-concept/0_Home_Insurance4.png", alt: "Mega Insurance" },
+  { src: "/assets/smile-concept/0_Home_Insurance2.webp", alt: "FPG Insurance" },
+  { src: "/assets/smile-concept/0_Home_Insurance3.webp", alt: "Pacific Cross Health Insurance" },
+  { src: "/assets/smile-concept/0_Home_Insurance4.webp", alt: "Mega Insurance" },
   { src: "/assets/smile-concept/0_Home_Insurance5.webp", alt: "Zurich" },
-  { src: "/assets/smile-concept/0_Home_Insurance6.png", alt: "Cigna" },
-  { src: "/assets/smile-concept/0_Home_Insurance7.png", alt: "Reliance Insurance" },
-  { src: "/assets/smile-concept/0_Home_Insurance8.png", alt: "Etiqa Insurance" },
-  { src: "/assets/smile-concept/0_Home_Insurance9.png", alt: "ACA Asuransi" },
-  { src: "/assets/smile-concept/0_Home_Insurance10.png", alt: "Asuransi MAG" },
+  { src: "/assets/smile-concept/0_Home_Insurance6.webp", alt: "Cigna" },
+  { src: "/assets/smile-concept/0_Home_Insurance7.webp", alt: "Reliance Insurance" },
+  { src: "/assets/smile-concept/0_Home_Insurance8.webp", alt: "Etiqa Insurance" },
+  { src: "/assets/smile-concept/0_Home_Insurance9.webp", alt: "ACA Asuransi" },
+  { src: "/assets/smile-concept/0_Home_Insurance10.webp", alt: "Asuransi MAG" },
   { src: "/assets/smile-concept/0_Home_Insurance11.webp", alt: "Asuransi Jasindo" },
   // Docx Final names logo 12 "BRI Life"; the revised HTML mislabels it as
   // another BCA Life — docx wins.
   { src: "/assets/smile-concept/0_Home_Insurance12.svg", alt: "BRI Life" },
-  { src: "/assets/smile-concept/0_Home_Insurance13.png", alt: "BCA Life" },
-  { src: "/assets/smile-concept/0_Home_Insurance14.png", alt: "Chubb" },
-  { src: "/assets/smile-concept/0_Home_Insurance15.png", alt: "China Life" },
+  { src: "/assets/smile-concept/0_Home_Insurance13.webp", alt: "BCA Life" },
+  { src: "/assets/smile-concept/0_Home_Insurance14.webp", alt: "Chubb" },
+  { src: "/assets/smile-concept/0_Home_Insurance15.webp", alt: "China Life" },
 ];
 
 /** Jumlah kartu promo yang tampil di home; selebihnya ada di /promo. */

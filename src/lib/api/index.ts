@@ -22,7 +22,8 @@ import { promos as fallbackPromos } from "../data/promo";
 
 export const API_BASE_URL =
   process.env.NEXT_PUBLIC_CMS_API_URL?.replace(/\/+$/, "") ??
-  "https://cms.tumbuhsehat.id/api";
+  // "https://cms.tumbuhsehat.id/api";
+  "https://cms.smileconceptclinic.com/api";
 
 const REVALIDATE_SETTINGS = process.env.NODE_ENV === "development" ? 60 : 43200; // prod: 12 hours
 const REVALIDATE_CONTENT = process.env.NODE_ENV === "development" ? 60 : 3600; // prod: 1 hour
@@ -102,9 +103,11 @@ export async function getPostsForSitemap(): Promise<CmsResponse<Post[]>> {
 function toPerks(value: string[] | string | null | undefined): string[] {
   if (Array.isArray(value)) return value.filter(Boolean);
   if (typeof value === "string") {
+    // The CMS stores the perk list as one `;`-separated string (verified against
+    // live data 2026-09-21); newlines still split too, for older entries.
     return value
-      .split(/\r?\n/)
-      .map((line) => line.trim())
+      .split(/[;\r\n]+/)
+      .map((part) => part.trim())
       .filter(Boolean);
   }
   return [];
@@ -129,8 +132,8 @@ function htmlToLines(html: string): string[] {
  *
  * Field mapping (schema provided by the backend 2026-09-15, CMS still empty at
  * the time — re-verify against a live row once one exists):
- *   - perks ← `description`, one bullet per line; falls back to tag-stripped
- *     `content` when the description is empty.
+ *   - perks ← `description`, one bullet per `;`-separated item (newlines also
+ *     split); falls back to tag-stripped `content` when the description is empty.
  *   - prices ← numeric `price` / `discounted_price` (0 = absent). The
  *     prototype's multi-line price lists (per-treatment pricing) cannot come
  *     from these numeric fields — CMS entries needing one should put the list
@@ -144,7 +147,7 @@ export function toPromoView(promo: CmsPromo): Promo {
   return {
     id: String(promo.id),
     title: promo.title,
-    image: promo.image?.url ?? "/assets/smile-concept/Placeholder.png",
+    image: promo.image?.url ?? "/assets/smile-concept/Placeholder.webp",
     alt: promo.image?.alt || promo.image?.title || promo.title,
     badge: "",
     perks:
