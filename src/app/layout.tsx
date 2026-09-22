@@ -3,6 +3,9 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { getSettings } from "@/lib/api";
 import { Analytics } from "@vercel/analytics/next"
+import Script from "next/script";
+
+const googleTagId = process.env.NEXT_PUBLIC_GOOGLE_TAG_ID;
 
 export default async function RootLayout({
   children,
@@ -27,6 +30,22 @@ export default async function RootLayout({
         <main className="min-h-screen">{children}</main>
         <Footer settings={settings.data} />
         <Analytics />
+        {googleTagId ? (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${googleTagId}`}
+              strategy="afterInteractive"
+            />
+            <Script id="google-tag" strategy="afterInteractive">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${googleTagId}');
+              `}
+            </Script>
+          </>
+        ) : null}
       </body>
     </html>
   );
