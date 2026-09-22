@@ -28,6 +28,14 @@ export const API_BASE_URL =
 const REVALIDATE_SETTINGS = process.env.NODE_ENV === "development" ? 60 : 43200; // prod: 12 hours
 const REVALIDATE_CONTENT = process.env.NODE_ENV === "development" ? 60 : 3600; // prod: 1 hour
 
+/**
+ * Promos are paginated at 10 per page by default, which silently dropped the
+ * 11th promo. `limit` is the parameter the CMS honours — `per_page` is
+ * accepted but ignored. Kept well above the real count; `getPromos` logs if
+ * the CMS ever reports more than this.
+ */
+const PROMO_PAGE_SIZE = 100;
+
 /** WhatsApp number used when the CMS has none configured — the clinic's
  *  real number (matches the live CMS settings), so a CMS outage still shows
  *  a correct contact. */
@@ -244,12 +252,21 @@ function isExpired(promo: CmsPromo): boolean {
 export async function getPromos(): Promise<CmsResponse<Promo[]>> {
   try {
     const res = await fetcher<CmsResponse<CmsPromo[]>>(
-      `${API_BASE_URL}/promos`,
+      `${API_BASE_URL}/promos?limit=${PROMO_PAGE_SIZE}`,
       {
         timeout: 20000,
         next: { revalidate: REVALIDATE_CONTENT, tags: ["promos"] },
       },
     );
+
+    // Loud, because the failure mode is invisible: promos just stop appearing.
+    const total = res?.meta?.total;
+    if (typeof total === "number" && (res?.data?.length ?? 0) < total) {
+      console.warn(
+        `CMS returned ${res?.data?.length ?? 0} of ${total} promos —` +
+          ` raise PROMO_PAGE_SIZE (currently ${PROMO_PAGE_SIZE}).`,
+      );
+    }
 
     const active = Array.isArray(res?.data)
       ? res.data.filter((promo) => promo.is_active !== false && !isExpired(promo))
