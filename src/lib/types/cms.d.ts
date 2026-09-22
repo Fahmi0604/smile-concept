@@ -136,28 +136,29 @@ declare type CmsPromo = {
   id: number;
   title: string;
   slug: string;
-  code: string;
-  /** Short copy — assumed to carry the card's perk bullets (newline-separated). */
-  description: string;
-  /** Long copy (HTML) — for a future promo detail page. */
-  content: string;
+  code: string | null;
+  /** Short copy. Live rows just repeat the title — not usable as perks. */
+  description: string | null;
+  /** Card body (HTML). Plain lines are perks, bold/heading lines are prices. */
+  content: string | null;
   is_active: boolean;
   /** The home promo section highlights these (3 in the prototype). */
   is_highlighted: boolean;
-  discount_type: string;
-  discount_value: number;
-  /** Regular price in rupiah; 0 = not set. */
-  price: number;
-  /** Promo price in rupiah; 0 = not set. */
-  discounted_price: number;
-  cta_text: string;
-  cta_link: string;
+  discount_type: string | null;
+  discount_value: number | null;
+  /** Regular price in rupiah. `null` or 0 = not set; most live rows are null. */
+  price: number | null;
+  /** Promo price in rupiah. `null` or 0 = not set. */
+  discounted_price: number | null;
+  cta_text: string | null;
+  cta_link: string | null;
   image: {
     url: string;
     alt: string;
     title: string;
   } | null;
-  expired_at: string;
+  /** ISO 8601. Past = hidden from the site; `null` = never expires. */
+  expired_at: string | null;
   created_at: string;
   updated_at: string;
 };
