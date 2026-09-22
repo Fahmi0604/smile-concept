@@ -29,12 +29,12 @@ const REVALIDATE_SETTINGS = process.env.NODE_ENV === "development" ? 60 : 43200;
 const REVALIDATE_CONTENT = process.env.NODE_ENV === "development" ? 60 : 3600; // prod: 1 hour
 
 /**
- * Promos are paginated at 10 per page by default, which silently dropped the
- * 11th promo. `limit` is the parameter the CMS honours — `per_page` is
- * accepted but ignored. Kept well above the real count; `getPromos` logs if
+ * List endpoints paginate at 10 per page by default, which silently dropped
+ * the 11th promo. `limit` is the parameter the CMS honours — `per_page` is
+ * accepted but ignored. Kept well above the real counts; `getPromos` logs if
  * the CMS ever reports more than this.
  */
-const PROMO_PAGE_SIZE = 100;
+const LIST_PAGE_SIZE = 100;
 
 /** WhatsApp number used when the CMS has none configured — the clinic's
  *  real number (matches the live CMS settings), so a CMS outage still shows
@@ -60,11 +60,11 @@ function emptyList<T>(message: string): CmsResponse<T[]> {
  * empty state instead of crashing the route.
  */
 export async function getPosts(
-  lang: CmsLanguage | null = null,
+  lang: CmsLanguage | null = "id",
 ): Promise<CmsResponse<Post[]>> {
-  const url = lang
-    ? `${API_BASE_URL}/posts?lang=${encodeURIComponent(lang)}`
-    : `${API_BASE_URL}/posts`;
+  const params = new URLSearchParams({ limit: String(LIST_PAGE_SIZE) });
+  if (lang) params.set("lang", lang);
+  const url = `${API_BASE_URL}/posts?${params}`;
 
   try {
     const res = await fetcher<CmsResponse<Post[]>>(url, {
@@ -102,8 +102,10 @@ export async function getPostBySlug(
   );
 }
 
+/** Every language — the sitemap should list `en` posts too, not just the
+ *  `id` default the site's own blog list uses. */
 export async function getPostsForSitemap(): Promise<CmsResponse<Post[]>> {
-  return getPosts();
+  return getPosts(null);
 }
 
 /* ------------------------------------------------------------------- promos */
@@ -252,7 +254,7 @@ function isExpired(promo: CmsPromo): boolean {
 export async function getPromos(): Promise<CmsResponse<Promo[]>> {
   try {
     const res = await fetcher<CmsResponse<CmsPromo[]>>(
-      `${API_BASE_URL}/promos?limit=${PROMO_PAGE_SIZE}`,
+      `${API_BASE_URL}/promos?limit=${LIST_PAGE_SIZE}`,
       {
         timeout: 20000,
         next: { revalidate: REVALIDATE_CONTENT, tags: ["promos"] },
@@ -264,12 +266,17 @@ export async function getPromos(): Promise<CmsResponse<Promo[]>> {
     if (typeof total === "number" && (res?.data?.length ?? 0) < total) {
       console.warn(
         `CMS returned ${res?.data?.length ?? 0} of ${total} promos —` +
-          ` raise PROMO_PAGE_SIZE (currently ${PROMO_PAGE_SIZE}).`,
+          ` raise LIST_PAGE_SIZE (currently ${LIST_PAGE_SIZE}).`,
       );
     }
 
+    // The CMS always returns newest-first and ignores every sort parameter we
+    // tried (`sort`, `order`, `direction`), so reverse here: the clinic reads
+    // the list in the order it created the promos, oldest first.
     const active = Array.isArray(res?.data)
-      ? res.data.filter((promo) => promo.is_active !== false && !isExpired(promo))
+      ? res.data
+          .filter((promo) => promo.is_active !== false && !isExpired(promo))
+          .reverse()
       : [];
 
     if (!active.length) {
