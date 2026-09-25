@@ -18,13 +18,13 @@ export default function Testimonial() {
             "max-md:flex-col max-md:min-h-0",
           ].join(" ")}
         >
-          <div className="relative shrink-0 basis-[45%] max-md:basis-auto max-md:aspect-[4/3]">
+          <div className="relative shrink-0 basis-[45%] max-md:basis-auto max-md:aspect-square">
             <Image
-              src="/assets/smile-concept/0_Home_Testimonial.jpg"
-              alt="Nurfathia Yasmin, a happy patient"
+              src="/assets/smile-concept/0_Home_Testimonial.webp"
+              alt="Matahari Palinggi, a happy patient"
               fill
               sizes="(max-width: 767px) 100vw, 45vw"
-              className="block object-cover object-[20%_center] max-md:rounded-t-[20px]"
+              className="block object-cover object-[center_top] max-md:rounded-t-[20px]"
             />
           </div>
 
@@ -36,18 +36,22 @@ export default function Testimonial() {
             ].join(" ")}
           >
             <p className="body-text text-ink m-0">
-              I&rsquo;ve been coming here for a few years now,{" "}
+              I decided to get braces here with Dr. Benazir, Sp. Ortho.{" "}
               <b>
-                from braces treatment to regular dental care, and every experience
-                has been comfortable and effective.
+                The doctor is very communicative, explained my dental issues
+                clearly, how to treat them, and which type of braces would suit
+                me best.
               </b>{" "}
-              My teeth alignment has improved so much over time. I really
-              appreciate the doctor and staff for their friendliness and the
-              clear information they always provide!
+              The front desk staff and nurses are also very friendly and respond
+              quickly via WhatsApp, so I never feel confused or worried about
+              missing information. I&rsquo;m still in the initial stage (dental
+              impressions), but everything has been running smoothly. They also
+              use a Godox camera, which helps both the doctor and patients
+              monitor the progress of the braces. Highly recommended! 😍💗
             </p>
             {/* Brief tidak memberi job title untuk testimonial ini, jadi barisnya dihilangkan. */}
             <div className="flex flex-col gap-1">
-              <strong className="h4 text-ink">Nurfathia Yasmin</strong>
+              <strong className="h4 text-ink">Matahari Palinggi</strong>
             </div>
           </div>
         </div>
