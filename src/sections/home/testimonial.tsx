@@ -38,13 +38,11 @@ export default function Testimonial() {
             <p className="body-text text-ink m-0">
               I decided to get braces here with Dr. Benazir, Sp. Ortho.{" "}
               <b>
-                The doctor is very communicative, explained my dental issues
-                clearly, how to treat them, and which type of braces would suit
-                me best.
-              </b>{" "}
-              The front desk staff and nurses are also very friendly and respond
-              quickly via WhatsApp, so I never feel confused or worried about
-              missing information. I&rsquo;m still in the initial stage (dental
+                The doctor is very communicative,</b> explained my dental issues
+              clearly, how to treat them, and which type of braces would suit
+              me best. The front desk staff and nurses are also <b>very friendly and respond quickly</b>{" "}
+              via WhatsApp, so <b>I never feel confused or worried about missing information.</b>{" "}
+              I&rsquo;m still in the initial stage (dental
               impressions), but everything has been running smoothly. They also
               use a Godox camera, which helps both the doctor and patients
               monitor the progress of the braces. Highly recommended! 😍💗
