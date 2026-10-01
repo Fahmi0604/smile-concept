@@ -3,7 +3,8 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://onyxdentalcenter.id
+Host: https://smileconceptclinic.com
 
 # Sitemaps
-Sitemap: https://onyxdentalcenter.id/api/sitemap
+Sitemap: https://smileconceptclinic.com/api/sitemap
+Sitemap: https://cms.smileconceptclinic.com/api/sitemap.xml
